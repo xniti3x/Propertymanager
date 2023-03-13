@@ -226,18 +226,9 @@ class MX_Router extends CI_Router
         }
     }
 
-    public function set_class($class)
+public function set_class($class)
     {
-        // fixed error with HMVC plugin in Codeigniter and php 7
-        /*$suffix = $this->config->item('controller_suffix');
-        if (strpos($class, $suffix) === false) {
-            $class .= $suffix;
-        }
-        parent::set_class($class);*/
-        $suffix = (string) $this->config->item('controller_suffix');
-        if ($suffix && strpos($class, $suffix) === false) {
-            $class .= $suffix;
-        }
+        $suffix = (string) $this->config->item('controller_suffix'); 
         parent::set_class($class);
     }
 }

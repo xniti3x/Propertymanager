@@ -28,7 +28,7 @@ class Clients extends Admin_Controller
     public function index()
     {
         // Display active clients by default
-        redirect('clients/status/active');
+        redirect('clients/status/all');
     }
 
     /**
@@ -42,15 +42,21 @@ class Clients extends Admin_Controller
             $this->mdl_clients->$function();
         }
 
+        $this->load->model('vertrag/mdl_vertrag');
         $this->mdl_clients->with_total_balance()->paginate(site_url('clients/status/' . $status), $page);
         $clients = $this->mdl_clients->result();
-
+        $records=[];
+        foreach($clients as $c){
+            $vertrag=$this->mdl_vertrag->getDataById($c->client_vertrag_id);
+            $records[]=array("client"=>$c,"vertrag"=>$vertrag);            
+        }
+        
         $this->layout->set(
             array(
-                'records' => $clients,
+                'records' => $records,
                 'filter_display' => true,
                 'filter_placeholder' => trans('filter_clients'),
-                'filter_method' => 'filter_clients'
+                'filter_method' => 'filter_clients',
             )
         );
 
@@ -188,6 +194,7 @@ class Clients extends Admin_Controller
         $this->load->model('payments/mdl_payments');
         $this->load->model('custom_fields/mdl_custom_fields');
         $this->load->model('custom_fields/mdl_client_custom');
+        $this->load->model('vertrag/mdl_vertrag');
 
         $client = $this->mdl_clients
             ->with_total()
@@ -203,6 +210,7 @@ class Clients extends Admin_Controller
         if (!$client) {
             show_404();
         }
+        $allClients=$this->mdl_clients->where('client_active',1)->limit(7)->get()->result();
 
         $this->layout->set(
             array(
@@ -213,12 +221,18 @@ class Clients extends Admin_Controller
                 'payments' => $this->mdl_payments->by_client($client_id)->limit(20)->get()->result(),
                 'custom_fields' => $custom_fields,
                 'quote_statuses' => $this->mdl_quotes->statuses(),
-                'invoice_statuses' => $this->mdl_invoices->statuses()
+                'invoice_statuses' => $this->mdl_invoices->statuses(),
+                'vertrag' => $this->mdl_vertrag->getDataByClientId($client_id),
+                'allclients' => $allClients
             )
         );
 
         $this->layout->buffer(
             array(
+                array(
+                    'invoice_client_table',
+                    'invoices/partial_invoice_client_table'
+                ),
                 array(
                     'invoice_table',
                     'invoices/partial_invoice_table'

@@ -1,3 +1,9 @@
+<script>
+    function onSelectChange(){
+ document.getElementById('frm').submit();
+}
+</script>
+  
 <div id="content">
     <?php echo $this->layout->load_view('layout/alerts'); ?>
 
@@ -33,44 +39,28 @@
         </div>
     </div>
 
+    <div class="row">      
+    </div>
+
     <div class="row">
-        <div class="col-xs-12 col-md-6">
-
-            <div id="panel-quote-overview" class="panel panel-default overview">
-
-                <div class="panel-heading">
-                    <b><i class="fa fa-bar-chart fa-margin"></i> <?php _trans('quote_overview'); ?></b>
-                    <span class="pull-right text-muted"><?php echo lang($quote_status_period); ?></span>
-                </div>
-
-                <table class="table table-hover table-bordered table-condensed no-margin">
-                    <?php foreach ($quote_status_totals as $total) { ?>
-                        <tr>
-                            <td>
-                                <a href="<?php echo site_url($total['href']); ?>">
-                                    <?php echo $total['label']; ?>
-                                </a>
-                            </td>
-                            <td class="amount">
-                        <span class="<?php echo $total['class']; ?>">
-                            <?php echo format_currency($total['sum_total']); ?>
-                        </span>
-                            </td>
-                        </tr>
-                    <?php } ?>
-                </table>
-            </div>
-
-        </div>
-        <div class="col-xs-12 col-md-6">
-
+    <div class="col-xs-12 col-md-6">
             <div id="panel-invoice-overview" class="panel panel-default overview">
-
                 <div class="panel-heading">
-                    <b><i class="fa fa-bar-chart fa-margin"></i> <?php _trans('invoice_overview'); ?></b>
-                    <span class="pull-right text-muted"><?php echo lang($invoice_status_period); ?></span>
+                    <form id="frm">
+                        <select name="invoice_status_id" id="invoice_status_id" onchange="onSelectChange();"
+                            class="form-control input-sm simple-select" data-minimum-results-for-search="Infinity"
+                        <?php if ($invoice->is_read_only == 1 && $invoice->invoice_status_id == 4) {
+                            echo 'disabled="disabled"';
+                        } ?>>
+                            <option <?php echo $this->input->get('invoice_status_id')=='this-month'? 'selected':''; ?> value="this-month"><?php _trans('this-month'); ?></option>
+                            <option <?php echo $this->input->get('invoice_status_id')=='last-month'? 'selected':''; ?> value="last-month"><?php _trans('last-month'); ?></option>
+                            <option <?php echo $this->input->get('invoice_status_id')=='this-quarter'? 'selected':''; ?> value="this-quarter"><?php _trans('this-quarter'); ?></option>
+                            <option <?php echo $this->input->get('invoice_status_id')=='last-quarter'? 'selected':''; ?> value="last-quarter"><?php _trans('last-quarter'); ?></option>
+                            <option <?php echo $this->input->get('invoice_status_id')=='this-year'? 'selected':''; ?> value="this-year"><?php _trans('this-year'); ?></option>
+                            <option <?php echo $this->input->get('invoice_status_id')=='last-year'? 'selected':''; ?> value="last-year"><?php _trans('last-year'); ?></option>
+                        </select>
+                    </form>    
                 </div>
-
                 <table class="table table-hover table-bordered table-condensed no-margin">
                     <?php foreach ($invoice_status_totals as $total) { ?>
                         <tr>
@@ -107,68 +97,6 @@
                     </span>
                 </div>
             <?php } ?>
-
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-12 col-md-6">
-
-            <div id="panel-recent-quotes" class="panel panel-default">
-
-                <div class="panel-heading">
-                    <b><i class="fa fa-history fa-margin"></i> <?php _trans('recent_quotes'); ?></b>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover table-striped table-condensed no-margin">
-                        <thead>
-                        <tr>
-                            <th><?php _trans('status'); ?></th>
-                            <th style="min-width: 15%;"><?php _trans('date'); ?></th>
-                            <th style="min-width: 15%;"><?php _trans('quote'); ?></th>
-                            <th style="min-width: 35%;"><?php _trans('client'); ?></th>
-                            <th style="text-align: right;"><?php _trans('balance'); ?></th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach ($quotes as $quote) { ?>
-                            <tr>
-                                <td>
-                                <span class="label
-                                <?php echo $quote_statuses[$quote->quote_status_id]['class']; ?>">
-                                    <?php echo $quote_statuses[$quote->quote_status_id]['label']; ?>
-                                </span>
-                                </td>
-                                <td>
-                                    <?php echo date_from_mysql($quote->quote_date_created); ?>
-                                </td>
-                                <td>
-                                    <?php echo anchor('quotes/view/' . $quote->quote_id, ($quote->quote_number ? $quote->quote_number : $quote->quote_id)); ?>
-                                </td>
-                                <td>
-                                    <?php echo anchor('clients/view/' . $quote->client_id, htmlsc(format_client($quote))); ?>
-                                </td>
-                                <td class="amount">
-                                    <?php echo format_currency($quote->quote_total); ?>
-                                </td>
-                                <td style="text-align: center;">
-                                    <a href="<?php echo site_url('quotes/generate_pdf/' . $quote->quote_id); ?>"
-                                       title="<?php _trans('download_pdf'); ?>">
-                                        <i class="fa fa-file-pdf-o"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                        <tr>
-                            <td colspan="6" class="text-right small">
-                                <?php echo anchor('quotes/status/all', trans('view_all')); ?>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
         </div>
         <div class="col-xs-12 col-md-6">

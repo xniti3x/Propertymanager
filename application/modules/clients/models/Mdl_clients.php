@@ -30,7 +30,7 @@ class Mdl_Clients extends Response_Model
 
     public function default_order_by()
     {
-        $this->db->order_by('ip_clients.client_name');
+        $this->db->order_by('ip_clients.client_name desc, ip_clients.client_active');
     }
 
     public function validation_rules()
@@ -255,4 +255,11 @@ class Mdl_Clients extends Response_Model
         return $this;
     }
 
+    public function getAllClientsWithVertrag()
+    {
+        $query=$this->db->query("select * from ip_clients,ip_vertrag where ip_clients.client_vertrag_id=ip_vertrag.id");
+        return $this->result();
+    }
+
+    
 }

@@ -14,53 +14,25 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-caret-down"></i> &nbsp;
+                    <a href="<?php echo site_url('clients/index'); ?>">
+                         &nbsp;
                         <span class="hidden-md"><?php _trans('clients'); ?></span>
                         <i class="visible-md-inline fa fa-users"></i>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><?php echo anchor('clients/form', trans('add_client')); ?></li>
-                        <li><?php echo anchor('clients/index', trans('view_clients')); ?></li>
-                    </ul>
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-caret-down"></i> &nbsp;
-                        <span class="hidden-md"><?php _trans('quotes'); ?></span>
-                        <i class="visible-md-inline fa fa-file"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" class="create-quote"><?php _trans('create_quote'); ?></a></li>
-                        <li><?php echo anchor('quotes/index', trans('view_quotes')); ?></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-caret-down"></i> &nbsp;
-                        <span class="hidden-md"><?php _trans('invoices'); ?></span>
+                    <a href="<?php echo site_url('invoices/index'); ?>">
+                        <span class="hidden-md"><?php _trans('Miete'); ?></span>
                         <i class="visible-md-inline fa fa-file-text"></i>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" class="create-invoice"><?php _trans('create_invoice'); ?></a></li>
-                        <li><?php echo anchor('invoices/index', trans('view_invoices')); ?></li>
-                        <li><?php echo anchor('invoices/recurring/index', trans('view_recurring_invoices')); ?></li>
-                    </ul>
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-caret-down"></i> &nbsp;
-                        <span class="hidden-md"><?php _trans('payments'); ?></span>
-                        <i class="visible-md-inline fa fa-credit-card"></i>
+                    <a href="<?php echo site_url('payments/index'); ?>">
+                            <span class="hidden-md"><?php _trans('payments'); ?></span>
+                            <i class="visible-md-inline fa fa-credit-card"></i>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><?php echo anchor('payments/form', trans('enter_payment')); ?></li>
-                        <li><?php echo anchor('payments/index', trans('view_payments')); ?></li>
-                        <li><?php echo anchor('payments/online_logs', trans('view_payment_logs')); ?></li>
-                    </ul>
                 </li>
 
                 <li class="dropdown">

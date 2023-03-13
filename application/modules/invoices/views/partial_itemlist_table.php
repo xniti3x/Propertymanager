@@ -7,7 +7,6 @@
             <th><?php _trans('description'); ?></th>
             <th><?php _trans('quantity'); ?></th>
             <th><?php _trans('price'); ?></th>
-            <th><?php _trans('tax_rate'); ?></th>
             <th><?php _trans('subtotal'); ?></th>
             <th><?php _trans('tax'); ?></th>
             <th><?php _trans('total'); ?></th>
@@ -49,7 +48,7 @@
                     <input type="text" name="item_price" class="input-sm form-control amount" value="">
                 </div>
             </td>
-            <td class="td-amount">
+            <td class="hidden td-amount">
                 <div class="input-group">
                     <span class="input-group-addon"><?php _trans('item_discount'); ?></span>
                     <input type="text" name="item_discount_amount" class="input-sm form-control amount"
@@ -97,7 +96,7 @@
                     </div>
                 </td>
             <?php endif; ?>
-            <td class="td-amount">
+            <td class="hidden td-amount">
                 <div class="input-group">
                     <span class="input-group-addon"><?php _trans('product_unit'); ?></span>
                     <select name="item_product_unit_id" class="form-control input-sm">
@@ -114,7 +113,7 @@
                 <span><?php _trans('subtotal'); ?></span><br/>
                 <span name="subtotal" class="amount"></span>
             </td>
-            <td class="td-amount td-vert-middle">
+            <td class="hidden td-amount td-vert-middle">
                 <span><?php _trans('discount'); ?></span><br/>
                 <span name="item_discount_total" class="amount"></span>
             </td>
@@ -192,7 +191,7 @@
                             } ?>>
                     </div>
                 </td>
-                <td class="td-amount">
+                <td class="hidden td-amount">
                     <div class="input-group">
                         <span class="input-group-addon"><?php _trans('item_discount'); ?></span>
                         <input type="text" name="item_discount_amount" class="input-sm form-control amount"
@@ -256,7 +255,7 @@
                     </td>
                 <?php endif; ?>
 
-                <td class="td-amount">
+                <td class="hidden td-amount">
                     <div class="input-group">
                         <span class="input-group-addon"><?php _trans('product_unit'); ?></span>
                         <select name="item_product_unit_id" class="form-control input-sm">
@@ -276,7 +275,7 @@
                         <?php echo format_currency($item->item_subtotal); ?>
                     </span>
                 </td>
-                <td class="td-amount td-vert-middle">
+                <td class="hidden td-amount td-vert-middle">
                     <span><?php _trans('discount'); ?></span><br/>
                     <span name="item_discount_total" class="amount">
                         <?php echo format_currency($item->item_discount); ?>
@@ -357,33 +356,6 @@
                     } else {
                         echo format_currency('0');
                     } ?>
-                </td>
-            </tr>
-            <tr>
-                <td class="td-vert-middle"><?php _trans('discount'); ?></td>
-                <td class="clearfix">
-                    <div class="discount-field">
-                        <div class="input-group input-group-sm">
-                            <input id="invoice_discount_amount" name="invoice_discount_amount"
-                                   class="discount-option form-control input-sm amount"
-                                   value="<?php echo format_amount($invoice->invoice_discount_amount != 0 ? $invoice->invoice_discount_amount : ''); ?>"
-                                <?php if ($invoice->is_read_only == 1) {
-                                    echo 'disabled="disabled"';
-                                } ?>>
-                            <div class="input-group-addon"><?php echo get_setting('currency_symbol'); ?></div>
-                        </div>
-                    </div>
-                    <div class="discount-field">
-                        <div class="input-group input-group-sm">
-                            <input id="invoice_discount_percent" name="invoice_discount_percent"
-                                   value="<?php echo format_amount($invoice->invoice_discount_percent != 0 ? $invoice->invoice_discount_percent : ''); ?>"
-                                   class="discount-option form-control input-sm amount"
-                                <?php if ($invoice->is_read_only == 1) {
-                                    echo 'disabled="disabled"';
-                                } ?>>
-                            <div class="input-group-addon">&percnt;</div>
-                        </div>
-                    </div>
                 </td>
             </tr>
             <tr>

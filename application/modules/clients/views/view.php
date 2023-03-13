@@ -44,14 +44,9 @@ foreach ($custom_fields as $custom_field) {
 ?>
 
 <div id="headerbar">
-    <h1 class="headerbar-title"><?php _htmlsc(format_client($client)); ?></h1>
 
     <div class="headerbar-item pull-right">
         <div class="btn-group btn-group-sm">
-            <a href="#" class="btn btn-default client-create-quote"
-               data-client-id="<?php echo $client->client_id; ?>">
-                <i class="fa fa-file"></i> <?php _trans('create_quote'); ?>
-            </a>
             <a href="#" class="btn btn-default client-create-invoice"
                data-client-id="<?php echo $client->client_id; ?>">
                 <i class="fa fa-file-text"></i> <?php _trans('create_invoice'); ?></a>
@@ -66,12 +61,19 @@ foreach ($custom_fields as $custom_field) {
             </a>
         </div>
     </div>
-
+    <div class="headerbar-item pull-left">
+        <div class="btn-group btn-group-sm index-options">
+        <?php foreach($allclients as $elem_client){ if($elem_client->client_id==$client->client_id) continue;?>
+            <a href="<?php echo site_url('clients/view/' . $elem_client->client_id); ?>" class="btn btn-default">
+            <?php _htmlsc(($elem_client->client_name)); ?>
+            </a>
+        <?php } ?>
+        </div>
+    </div>
 </div>
 
 <ul id="submenu" class="nav nav-tabs nav-tabs-noborder">
     <li class="active"><a data-toggle="tab" href="#clientDetails"><?php _trans('details'); ?></a></li>
-    <li><a data-toggle="tab" href="#clientQuotes"><?php _trans('quotes'); ?></a></li>
     <li><a data-toggle="tab" href="#clientInvoices"><?php _trans('invoices'); ?></a></li>
     <li><a data-toggle="tab" href="#clientPayments"><?php _trans('payments'); ?></a></li>
 </ul>
@@ -84,151 +86,46 @@ foreach ($custom_fields as $custom_field) {
             <?php $this->layout->load_view('layout/alerts'); ?>
 
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-6">
-
-                    <h3><?php _htmlsc(format_client($client)); ?></h3>
-                    <p>
-                        <?php $this->layout->load_view('clients/partial_client_address'); ?>
-                    </p>
-
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-6">
-
-                    <table class="table table-bordered no-margin">
-                        <tr>
-                            <th>
-                                <?php _trans('language'); ?>
-                            </th>
-                            <td class="td-amount">
-                                <?php echo ucfirst($client->client_language); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <?php _trans('total_billed'); ?>
-                            </th>
-                            <td class="td-amount">
-                                <?php echo format_currency($client->client_invoice_total); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <?php _trans('total_paid'); ?>
-                            </th>
-                            <th class="td-amount">
-                                <?php echo format_currency($client->client_invoice_paid); ?>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>
-                                <?php _trans('total_balance'); ?>
-                            </th>
-                            <td class="td-amount">
-                                <?php echo format_currency($client->client_invoice_balance); ?>
-                            </td>
-                        </tr>
-                    </table>
-
-                </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+               <h2> <?php echo $client->client_name; ?></h2> <hr>
+                <?php $this->layout->load_view('upload/dropzone-client-html'); ?>
+                    
+                <?php $this->layout->load_view('clients/partial_client_contract'); ?>
+               
             </div>
-
-            <hr>
-
+            </div>
             <div class="row">
-                <div class="col-xs-12 col-md-6">
-
-                    <div class="panel panel-default no-margin">
-                        <div class="panel-heading"><?php _trans('contact_information'); ?></div>
-                        <div class="panel-body table-content">
-                            <table class="table no-margin">
-                                <?php if ($client->client_email) : ?>
-                                    <tr>
-                                        <th><?php _trans('email'); ?></th>
-                                        <td><?php _auto_link($client->client_email, 'email'); ?></td>
-                                    </tr>
-                                <?php endif; ?>
-                                <?php if ($client->client_phone) : ?>
-                                    <tr>
-                                        <th><?php _trans('phone'); ?></th>
-                                        <td><?php _htmlsc($client->client_phone); ?></td>
-                                    </tr>
-                                <?php endif; ?>
-                                <?php if ($client->client_mobile) : ?>
-                                    <tr>
-                                        <th><?php _trans('mobile'); ?></th>
-                                        <td><?php _htmlsc($client->client_mobile); ?></td>
-                                    </tr>
-                                <?php endif; ?>
-                                <?php if ($client->client_fax) : ?>
-                                    <tr>
-                                        <th><?php _trans('fax'); ?></th>
-                                        <td><?php _htmlsc($client->client_fax); ?></td>
-                                    </tr>
-                                <?php endif; ?>
-                                <?php if ($client->client_web) : ?>
-                                    <tr>
-                                        <th><?php _trans('web'); ?></th>
-                                        <td><?php _auto_link($client->client_web, 'url', true); ?></td>
-                                    </tr>
-                                <?php endif; ?>
-
-                                <?php foreach ($custom_fields as $custom_field) : ?>
-                                    <?php if ($custom_field->custom_field_location != 2) {
-                                        continue;
-                                    } ?>
-                                    <tr>
-                                        <?php
-                                        $column = $custom_field->custom_field_label;
-                                        $value = $this->mdl_client_custom->form_value('cf_' . $custom_field->custom_field_id);
-                                        ?>
-                                        <th><?php _htmlsc($column); ?></th>
-                                        <td><?php _htmlsc($value); ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </table>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <div class="panel panel-default no-margin">
-
-                        <div class="panel-heading"><?php _trans('tax_information'); ?></div>
-                        <div class="panel-body table-content">
-                            <table class="table no-margin">
-                                <?php if ($client->client_vat_id) : ?>
-                                    <tr>
-                                        <th><?php _trans('vat_id'); ?></th>
-                                        <td><?php _htmlsc($client->client_vat_id); ?></td>
-                                    </tr>
-                                <?php endif; ?>
-                                <?php if ($client->client_tax_code) : ?>
-                                    <tr>
-                                        <th><?php _trans('tax_code'); ?></th>
-                                        <td><?php _htmlsc($client->client_tax_code); ?></td>
-                                    </tr>
-                                <?php endif; ?>
-
-                                <?php foreach ($custom_fields as $custom_field) : ?>
-                                    <?php if ($custom_field->custom_field_location != 4) {
-                                        continue;
-                                    } ?>
-                                    <tr>
-                                        <?php
-                                        $column = $custom_field->custom_field_label;
-                                        $value = $this->mdl_client_custom->form_value('cf_' . $custom_field->custom_field_id);
-                                        ?>
-                                        <th><?php _htmlsc($column); ?></th>
-                                        <td><?php _htmlsc($value); ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </table>
-                        </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <?php echo $invoice_client_table; ?>
+                        <table class="table table-bordered no-margin">
+                            <tr>
+                                <th>
+                                    <?php _trans('total_billed'); ?>
+                                </th>
+                                <td class="td-amount">
+                                    <?php echo format_currency($client->client_invoice_total); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <?php _trans('total_paid'); ?>
+                                </th>
+                                <th class="td-amount">
+                                    <?php echo format_currency($client->client_invoice_paid); ?>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <?php _trans('total_balance'); ?>
+                                </th>
+                                <td class="td-amount">
+                                    <?php echo format_currency($client->client_invoice_balance); ?>
+                                </td>
+                            </tr>
+                        </table>
 
                     </div>
                 </div>
-            </div>
-
             <?php if ($client->client_surname != ""): //Client is not a company ?>
                 <hr>
 
@@ -324,35 +221,7 @@ foreach ($custom_fields as $custom_field) {
 
             <hr>
 
-            <div class="row">
-                <div class="col-xs-12 col-md-6">
 
-                    <div class="panel panel-default no-margin">
-                        <div class="panel-heading">
-                            <?php _trans('notes'); ?>
-                        </div>
-                        <div class="panel-body">
-                            <div id="notes_list">
-                                <?php echo $partial_notes; ?>
-                            </div>
-                            <input type="hidden" name="client_id" id="client_id"
-                                   value="<?php echo $client->client_id; ?>">
-                            <div class="input-group">
-                                <textarea id="client_note" class="form-control" rows="2" style="resize:none"></textarea>
-                                <span id="save_client_note" class="input-group-addon btn btn-default">
-                                    <?php _trans('add_note'); ?>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-        <div id="clientQuotes" class="tab-pane table-content">
-            <?php echo $quote_table; ?>
         </div>
 
         <div id="clientInvoices" class="tab-pane table-content">
@@ -365,3 +234,5 @@ foreach ($custom_fields as $custom_field) {
     </div>
 
 </div>
+
+<?php $this->layout->load_view('upload/dropzone-client-scripts'); ?>

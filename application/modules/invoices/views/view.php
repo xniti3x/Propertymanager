@@ -70,6 +70,8 @@ $cv = $this->controller->view_data["custom_values"];
                     invoice_number: $('#invoice_number').val(),
                     invoice_date_created: $('#invoice_date_created').val(),
                     invoice_date_due: $('#invoice_date_due').val(),
+                    invoice_period_start:$('#invoice_period_start').val(),
+                    invoice_period_end:$('#invoice_period_end').val(),
                     invoice_status_id: $('#invoice_status_id').val(),
                     invoice_password: $('#invoice_password').val(),
                     items: JSON.stringify(items),
@@ -389,12 +391,12 @@ if ($this->config->item('disable_read_only') == true) {
                                 </div>
 
                                 <div class="invoice-properties has-feedback">
-                                    <label><?php _trans('date'); ?></label>
+                                    <label><?php _trans('period start'); ?></label>
 
                                     <div class="input-group">
-                                        <input name="invoice_date_created" id="invoice_date_created"
+                                        <input name="invoice_period_start" id="invoice_period_start"
                                                class="form-control input-sm datepicker"
-                                               value="<?php echo date_from_mysql($invoice->invoice_date_created); ?>"
+                                               value="<?php echo date_from_mysql($invoice->invoice_period_start); ?>"
                                             <?php if ($invoice->is_read_only == 1) {
                                                 echo 'disabled="disabled"';
                                             } ?>>
@@ -403,14 +405,13 @@ if ($this->config->item('disable_read_only') == true) {
                                         </span>
                                     </div>
                                 </div>
-
                                 <div class="invoice-properties has-feedback">
-                                    <label><?php _trans('due_date'); ?></label>
+                                    <label><?php _trans('period end'); ?></label>
 
                                     <div class="input-group">
-                                        <input name="invoice_date_due" id="invoice_date_due"
+                                        <input name="invoice_period_end" id="invoice_period_end"
                                                class="form-control input-sm datepicker"
-                                               value="<?php echo date_from_mysql($invoice->invoice_date_due); ?>"
+                                               value="<?php echo date_from_mysql($invoice->invoice_period_end); ?>"
                                             <?php if ($invoice->is_read_only == 1) {
                                                 echo 'disabled="disabled"';
                                             } ?>>
@@ -471,13 +472,44 @@ if ($this->config->item('disable_read_only') == true) {
                                     </select>
                                 </div>
 
-                                <div class="invoice-properties">
+                                <div class="hidden invoice-properties">
                                     <label><?php _trans('invoice_password'); ?></label>
                                     <input type="text" id="invoice_password" class="form-control input-sm"
                                            value="<?php _htmlsc($invoice->invoice_password); ?>"
                                         <?php if ($invoice->is_read_only == 1) {
                                             echo 'disabled="disabled"';
                                         } ?>>
+                                </div>
+                                <div class="invoice-properties has-feedback">
+                                    <label><?php _trans('date'); ?></label>
+
+                                    <div class="input-group">
+                                        <input name="invoice_date_created" id="invoice_date_created"
+                                               class="form-control input-sm datepicker"
+                                               value="<?php echo date_from_mysql($invoice->invoice_date_created); ?>"
+                                            <?php if ($invoice->is_read_only == 1) {
+                                                echo 'disabled="disabled"';
+                                            } ?>>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar fa-fw"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="invoice-properties has-feedback">
+                                    <label><?php _trans('due_date'); ?></label>
+
+                                    <div class="input-group">
+                                        <input name="invoice_date_due" id="invoice_date_due"
+                                               class="form-control input-sm datepicker"
+                                               value="<?php echo date_from_mysql($invoice->invoice_date_due); ?>"
+                                            <?php if ($invoice->is_read_only == 1) {
+                                                echo 'disabled="disabled"';
+                                            } ?>>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar fa-fw"></i>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
 

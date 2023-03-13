@@ -42,6 +42,10 @@
                class="btn  <?php echo $status == 'overdue' ? 'btn-primary' : 'btn-default' ?>">
                 <?php _trans('overdue'); ?>
             </a>
+            <a href="<?php echo site_url('invoices/recurring/index'); ?>"
+                   class="btn  btn-default">
+                    <?php _trans('Automatische Miete'); ?>
+            </a>
         </div>
     </div>
 
@@ -79,6 +83,10 @@
                 <a href="<?php echo site_url('invoices/status/overdue'); ?>"
                    class="btn  <?php echo $status == 'overdue' ? 'btn-primary' : 'btn-default' ?>">
                     <?php _trans('overdue'); ?>
+                </a>
+                <a href="<?php echo site_url('invoices/recurring/index'); ?>"
+                   class="btn  btn-default">
+                    <?php _trans('Automatische Miete'); ?>
                 </a>
             </div>
         </div>

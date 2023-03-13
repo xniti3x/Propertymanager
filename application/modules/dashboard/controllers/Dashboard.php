@@ -24,8 +24,8 @@ class Dashboard extends Admin_Controller
         $this->load->model('projects/mdl_projects');
         $this->load->model('tasks/mdl_tasks');
 
-        $quote_overview_period = get_setting('quote_overview_period');
-        $invoice_overview_period = $this->input->get('invoice_status_id');
+        $quote_overview_period = get_setting('quote_overview_period')?:'';
+        $invoice_overview_period = $this->input->get('invoice_status_id')?:'';
 
         $this->layout->set(
             array(

@@ -96,7 +96,7 @@
                     </div>
                 </td>
             <?php endif; ?>
-            <td class="hidden td-amount">
+            <td class="td-amount">
                 <div class="input-group">
                     <span class="input-group-addon"><?php _trans('product_unit'); ?></span>
                     <select name="item_product_unit_id" class="form-control input-sm">

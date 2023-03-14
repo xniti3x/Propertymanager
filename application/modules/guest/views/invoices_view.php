@@ -9,7 +9,7 @@
 </script>
 
 <div id="headerbar">
-    <h1 class="headerbar-title"><?php _trans('invoice'); ?> #<?php echo $invoice->invoice_number; ?></h1>
+    <h1 class="headerbar-title"><?php _trans('Miete'); ?> #<?php echo $invoice->invoice_number; ?></h1>
 
     <div class="headerbar-item pull-right">
         <div class="btn-group btn-group-sm">
@@ -77,7 +77,7 @@
 
                     <table class="table table-bordered">
                         <tr>
-                            <td><?php _trans('invoice'); ?> #</td>
+                            <td><?php _trans('Miete'); ?> #</td>
                             <td><?php echo $invoice->invoice_number; ?></td>
                         </tr>
                         <tr>

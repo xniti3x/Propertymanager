@@ -49,7 +49,7 @@ foreach ($custom_fields as $custom_field) {
         <div class="btn-group btn-group-sm">
             <a href="#" class="btn btn-default client-create-invoice"
                data-client-id="<?php echo $client->client_id; ?>">
-                <i class="fa fa-file-text"></i> <?php _trans('create_invoice'); ?></a>
+                <i class="fa fa-file-text"></i> <?php _trans('Miete erstellen'); ?></a>
             <a href="<?php echo site_url('clients/form/' . $client->client_id); ?>"
                class="btn btn-default">
                 <i class="fa fa-edit"></i> <?php _trans('edit'); ?>
@@ -74,7 +74,7 @@ foreach ($custom_fields as $custom_field) {
 
 <ul id="submenu" class="nav nav-tabs nav-tabs-noborder">
     <li class="active"><a data-toggle="tab" href="#clientDetails"><?php _trans('details'); ?></a></li>
-    <li><a data-toggle="tab" href="#clientInvoices"><?php _trans('invoices'); ?></a></li>
+    <li><a data-toggle="tab" href="#clientInvoices"><?php _trans('Mieten'); ?></a></li>
     <li><a data-toggle="tab" href="#clientPayments"><?php _trans('payments'); ?></a></li>
 </ul>
 

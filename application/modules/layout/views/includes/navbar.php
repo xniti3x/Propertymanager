@@ -23,7 +23,7 @@
 
                 <li class="dropdown">
                     <a href="<?php echo site_url('invoices/index'); ?>">
-                        <span class="hidden-md"><?php _trans('Miete'); ?></span>
+                        <span class="hidden-md"><?php _trans('Mieten'); ?></span>
                         <i class="visible-md-inline fa fa-file-text"></i>
                     </a>
                 </li>

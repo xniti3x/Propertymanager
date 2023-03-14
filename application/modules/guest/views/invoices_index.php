@@ -1,6 +1,6 @@
 <div id="headerbar">
 
-    <h1 class="headerbar-title"><?php _trans('invoices'); ?></h1>
+    <h1 class="headerbar-title"><?php _trans('Mieten'); ?></h1>
 
     <div class="headerbar-item pull-right">
         <?php echo pager(site_url('guest/invoices/status/' . $this->uri->segment(4)), 'mdl_invoices'); ?>
@@ -31,7 +31,7 @@
 
                 <thead>
                 <tr>
-                    <th><?php _trans('invoice'); ?></th>
+                    <th><?php _trans('Miete'); ?></th>
                     <th><?php _trans('created'); ?></th>
                     <th><?php _trans('due_date'); ?></th>
                     <th><?php _trans('client_name'); ?></th>

@@ -1,6 +1,6 @@
 <div id="headerbar">
 
-    <h1 class="headerbar-title"><?php _trans('invoices'); ?></h1>
+    <h1 class="headerbar-title"><?php _trans('Mieten'); ?></h1>
 
     <div class="headerbar-item pull-right">
         <a class="create-invoice btn btn-sm btn-primary" href="#">

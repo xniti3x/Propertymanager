@@ -45,7 +45,7 @@
                             <li>
                                 <a href="#" class="client-create-invoice"
                                    data-client-id="<?php echo $record['client']->client_id; ?>">
-                                    <i class="fa fa-file-text fa-margin"></i> <?php _trans('create_invoice'); ?>
+                                    <i class="fa fa-file-text fa-margin"></i> <?php _trans('Miete erstellen'); ?>
                                 </a>
                             </li>
                             <li>

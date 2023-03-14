@@ -3,7 +3,7 @@
 
         <thead>
         <tr>
-            <th><?php _trans('invoice'); ?></th>
+            <th><?php _trans('Miete'); ?></th>
             <th><?php _trans('created'); ?></th>
             <th><?php _trans('due_date'); ?></th>
             <th><?php _trans('client_name'); ?></th>

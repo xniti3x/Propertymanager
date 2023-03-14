@@ -3,7 +3,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <?php _trans('invoices'); ?>
+                <?php _trans('Mieten'); ?>
             </div>
             <div class="panel-body">
 

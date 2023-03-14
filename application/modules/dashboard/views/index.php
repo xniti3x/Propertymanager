@@ -27,7 +27,7 @@
                     </a>
                     <a href="javascript:void(0)" class="create-invoice btn btn-default">
                         <i class="fa fa-file-text fa-margin"></i>
-                        <span class="hidden-xs"><?php _trans('create_invoice'); ?></span>
+                        <span class="hidden-xs"><?php _trans('Miete erstellen'); ?></span>
                     </a>
                     <a href="<?php echo site_url('payments/form'); ?>" class="btn btn-default">
                         <i class="fa fa-credit-card fa-margin"></i>
@@ -82,7 +82,7 @@
 
             <?php if (empty($overdue_invoices)) { ?>
                 <div class="panel panel-default panel-heading">
-                    <span class="text-muted"><?php _trans('no_overdue_invoices'); ?></span>
+                    <span class="text-muted"><?php _trans('Keine Überfälligen Mieten'); ?></span>
                 </div>
             <?php } else {
                 $overdue_invoices_total = 0;
@@ -91,7 +91,7 @@
                 }
                 ?>
                 <div class="panel panel-danger panel-heading">
-                    <?php echo anchor('invoices/status/overdue', '<i class="fa fa-external-link"></i> ' . trans('overdue_invoices'), 'class="text-danger"'); ?>
+                    <?php echo anchor('invoices/status/overdue', '<i class="fa fa-external-link"></i> ' . trans('Überfällige Mieten'), 'class="text-danger"'); ?>
                     <span class="pull-right text-danger">
                         <?php echo format_currency($overdue_invoices_total); ?>
                     </span>
@@ -104,7 +104,7 @@
             <div id="panel-recent-invoices" class="panel panel-default">
 
                 <div class="panel-heading">
-                    <b><i class="fa fa-history fa-margin"></i> <?php _trans('recent_invoices'); ?></b>
+                    <b><i class="fa fa-history fa-margin"></i> <?php _trans('Offene Mieten'); ?></b>
                 </div>
 
                 <div class="table-responsive">
@@ -113,7 +113,7 @@
                         <tr>
                             <th><?php _trans('status'); ?></th>
                             <th style="min-width: 15%;"><?php _trans('due_date'); ?></th>
-                            <th style="min-width: 15%;"><?php _trans('invoice'); ?></th>
+                            <th style="min-width: 15%;"><?php _trans('Miete'); ?></th>
                             <th style="min-width: 35%;"><?php _trans('client'); ?></th>
                             <th style="text-align: right;"><?php _trans('balance'); ?></th>
                             <th></th>

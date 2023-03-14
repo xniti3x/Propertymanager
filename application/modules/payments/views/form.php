@@ -42,7 +42,7 @@
 
         <div class="form-group">
             <div class="col-xs-12 col-sm-2 text-right text-left-xs">
-                <label for="invoice_id" class="control-label"><?php _trans('invoice'); ?></label>
+                <label for="invoice_id" class="control-label"><?php _trans('Miete'); ?></label>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <select name="invoice_id" id="invoice_id" class="form-control simple-select">

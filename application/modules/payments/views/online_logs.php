@@ -18,7 +18,7 @@
                 <thead>
                 <tr>
                     <th><?php _trans('payment_date'); ?></th>
-                    <th><?php _trans('invoice'); ?></th>
+                    <th><?php _trans('Miete'); ?></th>
                     <th><?php _trans('transaction_successful'); ?></th>
                     <th><?php _trans('payment_date'); ?></th>
                     <th><?php _trans('payment_provider'); ?></th>
@@ -33,7 +33,7 @@
                         <td><?php echo $log->merchant_response_id; ?></td>
                         <td>
                             <a href="<?php echo site_url('invoices/view/' . $log->invoice_id); ?>"
-                               title="<?php _trans('invoice'); ?>">
+                               title="<?php _trans('Miete'); ?>">
                                 <?php echo($log->invoice_number ? $log->invoice_number : $log->invoice_id); ?>
                             </a>
                         </td>

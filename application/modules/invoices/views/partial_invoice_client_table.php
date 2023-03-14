@@ -3,7 +3,7 @@
         <thead>
         <tr>
             <th><?php _trans('status'); ?></th>
-            <th><?php _trans('invoice'); ?></th>
+            <th><?php _trans('Miete'); ?></th>
             <th><?php _trans('Zeitraum'); ?></th>
             <th style="text-align: right;"><?php _trans('amount'); ?></th>
             <th style="text-align: right;"><?php _trans('balance'); ?></th>

@@ -378,7 +378,7 @@ if ($this->config->item('disable_read_only') == true) {
                             <div class="col-xs-12 col-md-6">
 
                                 <div class="invoice-properties">
-                                    <label><?php _trans('invoice'); ?> #</label>
+                                    <label><?php _trans('Miete'); ?> #</label>
                                     <input type="text" id="invoice_number" class="form-control input-sm"
                                         <?php if ($invoice->invoice_number) : ?>
                                             value="<?php echo $invoice->invoice_number; ?>"

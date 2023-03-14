@@ -18,7 +18,7 @@
                 <thead>
                 <tr>
                     <th><?php _trans('date'); ?></th>
-                    <th><?php _trans('invoice'); ?></th>
+                    <th><?php _trans('Miete'); ?></th>
                     <th><?php _trans('amount'); ?></th>
                     <th><?php _trans('payment_method'); ?></th>
                     <th><?php _trans('note'); ?></th>

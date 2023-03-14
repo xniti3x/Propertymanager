@@ -97,7 +97,7 @@
                 </a>
             </li>
             <li>
-                <a href="<?php echo site_url('guest/invoices/index'); ?>" title="<?php _trans('invoices'); ?>"
+                <a href="<?php echo site_url('guest/invoices/index'); ?>" title="<?php _trans('Mieten'); ?>"
                    class="tip" data-placement="right">
                     <i class="fa fa-file-text"></i>
                 </a>

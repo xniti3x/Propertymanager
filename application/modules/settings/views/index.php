@@ -20,7 +20,7 @@
         <a data-toggle="tab" href="#settings-general"><?php _trans('general'); ?></a>
     </li>
     <li>
-        <a data-toggle="tab" href="#settings-invoices"><?php _trans('invoices'); ?></a>
+        <a data-toggle="tab" href="#settings-invoices"><?php _trans('Mieten'); ?></a>
     </li>
     <li>
         <a data-toggle="tab" href="#settings-quotes"><?php _trans('quotes'); ?></a>

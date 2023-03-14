@@ -36,7 +36,7 @@
                         <label>
                             <input type="radio" name="email_template_type" id="email_template_type_invoice"
                                    value="invoice" checked>
-                            <?php _trans('invoice'); ?>
+                            <?php _trans('Miete'); ?>
                         </label>
                     </div>
                     <div class="radio">
@@ -97,7 +97,7 @@
                             class="form-control simple-select">
                         <option value=""><?php _trans('none'); ?></option>
 
-                        <optgroup label="<?php _trans('invoices'); ?>">
+                        <optgroup label="<?php _trans('Mieten'); ?>">
                             <?php foreach ($invoice_templates as $template): ?>
                                 <option class="hidden-invoice" value="<?php echo $template; ?>"
                                     <?php check_select($selected_pdf_template, $template); ?>>

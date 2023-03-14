@@ -60,7 +60,10 @@
   1. Rückgabe der Mietsache
   Der Mieter hat dem Vermieter die Mietsache vollständig geräumt und gereinigt und mit sämtlichen, auch den vom Mieter beschafften, Schlüssel zu einem von beiden Parteien vereinbarten Termin zu übergeben. Über die Übergabe ist ein Protokoll zu erstellen.</td></tr>
   <tr><td><b>§10 Individuele Vereinbarung</b><br>
-   - Der Mieter hat dafür Sorge zu tragen, dass bei allen in der Mietsache befindlichen Messgeräte  (Heizung, Warm-, Kaltwasser etc.) auf seine Kosten eine Zwischenablesung stattfindet. Das Protokoll über die Zwischenablesung ist dem Vermieter spätestens jede 6 Monate auszuhändigen, andernfalls hat der Vermieter das Recht, eine grobe Schätzung des Verbrauches zu machen.
+  1. Um Privatsphäre bzw. Störungen zu vermeiden verpflichtet sich der Mieter hiermit für die Ablesung der Heizungsmessgeräte und der Warmwasserzähler(Zählernummer, Wert).
+   <br> 2. Die Ablesung hat Schriftlich oder Digital (Im Sinne von Fotos oder änlichem) zu erfolgen und muss mindestens alle 6 Monate gelesen werden.
+   <br> 3. Im Falle einer Fehlenden bzw. ungenauen oder unglaubwürdigen Protokollierung darf der Vermieter die Verbrauchswerte im normalen Maß (Durchschnitt der anderen Verbraucher) schätzen. 
+
   </td></tr>
   </table>
   <br>

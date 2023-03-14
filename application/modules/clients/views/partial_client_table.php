@@ -10,7 +10,7 @@
             <th><?php _trans('options'); ?></th>
         </tr>
         </thead>
-        <tbody>
+        <tbody><pre><?php print_r($records); ?></pre>
         <?php foreach ($records as $record) : ?>
             <tr>
 				<td>

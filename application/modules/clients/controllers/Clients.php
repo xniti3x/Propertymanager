@@ -47,7 +47,7 @@ class Clients extends Admin_Controller
         $clients = $this->mdl_clients->result();
         $records=[];
         foreach($clients as $c){
-            $vertrag=$this->mdl_vertrag->getDataById($c->client_vertrag_id);
+            $vertrag=$this->mdl_vertrag->getDataByClientId($c->client_id);
             $records[]=array("client"=>$c,"vertrag"=>$vertrag);            
         }
         

@@ -86,18 +86,14 @@ foreach ($custom_fields as $custom_field) {
             <?php $this->layout->load_view('layout/alerts'); ?>
 
             <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6">
-               <h2> <?php echo $client->client_name; ?></h2> <hr>
-                <?php $this->layout->load_view('upload/dropzone-client-html'); ?>
-                    
-                <?php $this->layout->load_view('clients/partial_client_contract'); ?>
-               
-            </div>
-            </div>
-            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                <h2> <?php echo $client->client_name; ?></h2> <hr>
+                    <?php $this->layout->load_view('upload/dropzone-client-html'); ?>
+                    <?php $this->layout->load_view('clients/partial_client_contract'); ?>
+                </div> 
                 <div class="col-xs-12 col-sm-6 col-md-6">
                     <?php echo $invoice_client_table; ?>
-                        <table class="table table-bordered no-margin">
+                    <table class="table table-bordered no-margin">
                             <tr>
                                 <th>
                                     <?php _trans('total_billed'); ?>
@@ -123,9 +119,8 @@ foreach ($custom_fields as $custom_field) {
                                 </td>
                             </tr>
                         </table>
-
-                    </div>
                 </div>
+            </div>
             <?php if ($client->client_surname != ""): //Client is not a company ?>
                 <hr>
 

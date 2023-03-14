@@ -67,7 +67,7 @@ class Invoices extends Admin_Controller
                 'invoices' => $invoices,
                 'status' => $status,
                 'filter_display' => true,
-                'filter_placeholder' => trans('filter_invoices'),
+                'filter_placeholder' => trans('Miete filtern'),
                 'filter_method' => 'filter_invoices',
                 'invoice_statuses' => $this->mdl_invoices->statuses(),
             ]

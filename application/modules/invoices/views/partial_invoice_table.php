@@ -6,7 +6,7 @@
             <th><?php _trans('status'); ?></th>
             <th><?php _trans('invoice'); ?></th>
             <th><?php _trans('created'); ?></th>
-            <th><?php _trans('due_date'); ?></th>
+            <th><?php _trans('Zeitraum'); ?></th>
             <th><?php _trans('client_name'); ?></th>
             <th style="text-align: right;"><?php _trans('amount'); ?></th>
             <th style="text-align: right;"><?php _trans('balance'); ?></th>
@@ -56,7 +56,7 @@
 
                 <td>
                     <span class="<?php if ($invoice->is_overdue) { ?>font-overdue<?php } ?>">
-                        <?php echo date_from_mysql($invoice->invoice_date_due); ?>
+                        <?php echo date_from_mysql($invoice->invoice_period_start)." - ".date_from_mysql($invoice->invoice_period_end); ?>
                     </span>
                 </td>
 

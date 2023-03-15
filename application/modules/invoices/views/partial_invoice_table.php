@@ -7,7 +7,7 @@
             <th><?php _trans('Miete'); ?></th>
             <th><?php _trans('created'); ?></th>
             <th><?php _trans('Zeitraum'); ?></th>
-            <th><?php _trans('client_name'); ?></th>
+            <th><?php _trans('Name des Mieters'); ?></th>
             <th style="text-align: right;"><?php _trans('amount'); ?></th>
             <th style="text-align: right;"><?php _trans('balance'); ?></th>
             <th><?php _trans('options'); ?></th>

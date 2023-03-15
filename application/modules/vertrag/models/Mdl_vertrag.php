@@ -7,6 +7,12 @@ class Mdl_Vertrag extends Response_Model{
         return $this->db->get('ip_vertrag')->result();
     }
 
+    public function getAllWithClient() {
+        $this->db->select('*');
+        $this->db->from('ip_vertrag');
+        $this->db->join('ip_clients','ip_clients.client_id = ip_vertrag.client_id');   
+        return $this->db->get()->result();
+    }
     public function insert($data) {
         $this->db->insert('ip_vertrag', $data);
         return $this->db->insert_id();

@@ -16,7 +16,7 @@
                 <li class="dropdown">
                     <a href="<?php echo site_url('clients/index'); ?>">
                          &nbsp;
-                        <span class="hidden-md"><?php _trans('clients'); ?></span>
+                        <span class="hidden-md"><?php _trans('Mieter'); ?></span>
                         <i class="visible-md-inline fa fa-users"></i>
                     </a>
                 </li>
@@ -27,7 +27,12 @@
                         <i class="visible-md-inline fa fa-file-text"></i>
                     </a>
                 </li>
-
+                <li class="dropdown">
+                    <a href="<?php echo site_url('vertrag/index'); ?>">
+                        <span class="hidden-md"><?php _trans('Verträge'); ?></span>
+                        <i class="visible-md-inline fa fa-file-text"></i>
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a href="<?php echo site_url('payments/index'); ?>">
                             <span class="hidden-md"><?php _trans('payments'); ?></span>

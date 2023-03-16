@@ -16,15 +16,15 @@
       </div>
             <div class="form-group">
         <label for="wohnzweck">Wohnzweck:</label>
-        <input type="text" class="form-control" id="wohnzweck" name="wohnzweck">
+        <input type="text" class="form-control" id="wohnzweck" name="wohnzweck" placeholder="Wohnzwecken | Geschäftlich">
       </div>
             <div class="form-group">
-        <label for="adresse">Adresse:</label>
+        <label for="adresse">Adresse vom Objekt:</label>
         <input type="text" class="form-control" id="adresse" name="adresse">
       </div>
             <div class="form-group">
-        <label for="raumlichkeiten">Raumlichkeiten:</label>
-        <input type="text" class="form-control" id="raumlichkeiten" name="raumlichkeiten">
+        <label for="raumlichkeiten">Räumlichkeiten:</label>
+        <input type="text" class="form-control" id="raumlichkeiten" name="raumlichkeiten" placeholder="3 Zimmer, 1 Küche, Bad/WC, 1 Diele, 1 Balkon, 1 Kellerraum ca. 6 qm, 1 Stellpaltz">
       </div>
             <div class="form-group">
         <label for="kaltmiete">Kaltmiete:</label>

@@ -2,7 +2,7 @@
     <h1 class="headerbar-title"><?php _trans('Manage Vertrag'); ?></h1>
 
     <div class="headerbar-item pull-right">
-        <a class="btn btn-sm btn-primary" href="<?php echo site_url('payments/form'); ?>">
+        <a class="btn btn-sm btn-primary" target="blank" href="<?php echo site_url('vertrag/addVertrag'); ?>">
             <i class="fa fa-plus"></i> <?php _trans('new'); ?>
         </a>
     </div>

@@ -8,6 +8,7 @@
             <th>Stockwerk</th>
             <th>Zeitraum</th>
             <th>Mieter</th>
+            <th>Räumlichkeiten</th>
             <th><?php _trans('options'); ?></th>
         </tr>
         </thead>
@@ -25,6 +26,7 @@
                         <?php echo $vertrag->client_name." | ".$vertrag->client_address_1." | ".$vertrag->client_city; ?>
                     </a>
                 </td>
+                <td><?php echo ($vertrag->raumlichkeiten); ?></td>
                <td>
                     <div class="options btn-group">
                         <a class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" href="#">
@@ -32,13 +34,13 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="<?php echo site_url('vertrag/viewVertrag/' . $vertrag->id); ?>">
+                                <a target="blank" href="<?php echo site_url('vertrag/viewVertrag/' . $vertrag->id); ?>">
                                     <i class="fa fa-eye fa-margin"></i>
                                     <?php _trans('view'); ?>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo site_url('vertrag/editVertrag/' . $vertrag->id); ?>">
+                                <a target="blank" href="<?php echo site_url('vertrag/editVertrag/' . $vertrag->id); ?>">
                                     <i class="fa fa-edit fa-margin"></i>
                                     <?php _trans('edit'); ?>
                                 </a>

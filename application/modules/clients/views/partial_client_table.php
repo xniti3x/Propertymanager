@@ -3,7 +3,7 @@
         <thead>
         <tr>
             <th><?php _trans('active'); ?></th>
-            <th><?php _trans('client_name'); ?></th>
+            <th><?php _trans('Name des Mieters'); ?></th>
             <th><?php _trans('Stockwerk'); ?></th>
             <th><?php _trans('Vertrag'); ?></th>
             <th class="amount"><?php _trans('balance'); ?></th>

@@ -96,15 +96,6 @@
             <?php } ?>
 
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="https://wiki.invoiceplane.com/" target="_blank"
-                       class="tip icon" title="<?php _trans('documentation'); ?>"
-                       data-placement="bottom">
-                        <i class="fa fa-question-circle"></i>
-                        <span class="visible-xs">&nbsp;<?php _trans('documentation'); ?></span>
-                    </a>
-                </li>
-
                 <li class="dropdown">
                     <a href="#" class="tip icon dropdown-toggle" data-toggle="dropdown"
                        title="<?php _trans('settings'); ?>"

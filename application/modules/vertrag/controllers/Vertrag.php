@@ -16,8 +16,8 @@ class Vertrag extends Admin_Controller
     }
 
     public function addVertrag($id=null) {
-
-        $this->layout->buffer('content', 'vertrag/add-vertrag',array("client_id"=>$id));
+        $this->load->model('clients/mdl_clients');
+        $this->layout->buffer('content', 'vertrag/add-vertrag',array("client_id"=>$id,"clients" => $this->mdl_clients->get()->result()));
         $this->layout->render();
     }
 

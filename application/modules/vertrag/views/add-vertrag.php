@@ -2,6 +2,25 @@
   <h2>Add Vertrag</h2>  
     <form role="form" method="post" action="<?php echo site_url('vertrag/addVertragPost')?>" >
     <input type="hidden" name="<?php echo $this->config->item('csrf_token_name'); ?>"value="<?php echo $this->security->get_csrf_hash() ?>">
+      
+      <div class="form-group has-feedback">
+          <label for="create_invoice_client_id"><?php _trans('Mieter'); ?></label>
+          <div class="input-group">
+              <select name="client_id" id="create_invoice_client_id" class="client-id-select form-control"
+                      autofocus="autofocus">
+                  
+                    <?php foreach($clients as $client){?>
+                      <option <?php echo $client->client_id==$client_id?"selected":""; ?> value="<?php echo $client->client_id; ?>"><?php _htmlsc(format_client($client)); ?></option>
+                    <?php } ?>
+                  
+              </select>
+              <span id="toggle_permissive_search_clients" class="input-group-addon"
+                    title="<?php _trans('enable_permissive_search_clients'); ?>" style="cursor:pointer;">
+                  <i class="fa fa-toggle-<?php echo get_setting('enable_permissive_search_clients') ? 'on' : 'off' ?> fa-fw"></i>
+              </span>
+          </div>
+      </div
+    
       <div class="form-group">
         <label for="vermieter">Vermieter:</label>
         <input type="text" class="form-control" id="vermieter" name="vermieter">

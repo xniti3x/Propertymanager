@@ -182,6 +182,44 @@ class Upload extends Admin_Controller
             header("Content-Type: " . $ctype);
             header("Content-Length: " . $file_size);
 
+            
+            echo file_get_contents($file_path);
+            exit;
+        }
+
+        show_404();
+        exit;
+    }
+
+    public function show_file($filename)
+    {
+        $base_path = UPLOADS_CFILES_FOLDER;
+        $file_path = $base_path . $filename;
+
+        if (strpos(realpath($base_path), realpath($file_path)) != 0) {
+            show_404();
+            exit;
+        }
+
+        $path_parts = pathinfo($file_path);
+        $file_ext = $path_parts['extension'];
+
+        if (file_exists($file_path)) {
+            $file_size = filesize($file_path);
+
+            $save_ctype = isset($this->content_types[$file_ext]);
+            $ctype = $save_ctype ? $this->content_types[$file_ext] : $this->ctype_default;
+
+            //header("Expires: -1");
+            //header("Cache-Control: public, must-revalidate, post-check=0, pre-check=0");
+            //header("Content-Disposition: attachment; filename=\"$filename\"");
+            //header("Content-Type: " . $ctype);
+
+            //header('Content-Length: '.file_size);
+            header("Content-type: application/pdf");
+            header("Content-disposition: attachment; filename=$filename");
+            readfile($path);
+
             echo file_get_contents($file_path);
             exit;
         }

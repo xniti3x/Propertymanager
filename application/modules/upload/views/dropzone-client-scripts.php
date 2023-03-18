@@ -49,7 +49,7 @@
     previewNode.parentNode.removeChild(previewNode);
 
     var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-        url: '<?php echo site_url('upload/upload_file/' . $client->client_id . '/' . $client->client_name) ?>',
+        url: '<?php echo site_url('upload/upload_file/' . $client->client_id . '/' . preg_replace('/\s+/', '_', $client->client_name)) ?>',
         params: {
             '<?php echo $this->config->item('csrf_token_name'); ?>': Cookies.get('<?php echo $this->config->item('csrf_cookie_name'); ?>'),
         },
@@ -64,14 +64,16 @@
         clickable: '.fileinput-button', // Define the element that should be used as click trigger to select files.
         init: function () {
             thisDropzone = this;
-            $.getJSON('<?php echo site_url('upload/upload_file/' . $client->client_id . '/' . $client->client_name) ?>',
+            $.getJSON('<?php echo site_url('upload/upload_file/' . $client->client_id . '/' . preg_replace('/\s+/', '_', $client->client_name)); ?>',
                 function (data) {
+                    console.log(data);
                     $.each(data, function (index, val) {
                         var mockFile = {fullname: val.fullname, size: val.size, name: val.name};
-
+                        
                         thisDropzone.options.addedfile.call(thisDropzone, mockFile);
                         createDownloadButton(mockFile, '<?php echo site_url('upload/get_file'); ?>/' + val.fullname);
-
+                        createViewButton(mockFile, '<?php echo base_url().'uploads/customer_files'; ?>/' + val.fullname);
+                        console.log(mockFile);
                         if (val.fullname.match(/\.(jpg|jpeg|png|gif)$/)) {
                             thisDropzone.options.thumbnail.call(thisDropzone, mockFile,
                                 '<?php echo site_url('upload/get_file'); ?>/' + val.fullname);
@@ -104,7 +106,9 @@
         var fileIcon = getIcon(file.name);
         myDropzone.emit('thumbnail', file,
             '<?php echo base_url('assets/core/img/file-icons/'); ?>' + fileIcon + '.svg');
-        createDownloadButton(file, '<?php echo site_url('upload/get_file/' . $client->client_name . '_') ?>' +
+        createDownloadButton(file, '<?php echo site_url('upload/get_file/' . preg_replace('/\s+/', '_', $client->client_name). '_') ?>' +
+            file.name.replace(/\s+/g, '_'));
+        createViewButton(file, '<?php echo base_url('uploads/customer_files/' . preg_replace('/\s+/', '_', $client->client_name) . '_') ?>' +
             file.name.replace(/\s+/g, '_'));
     });
 
@@ -146,6 +150,20 @@
                 location.href = fileUrl;
                 return false;
             });
+        }
+    }
+    function createViewButton(file, fileUrl) {
+        var viewButtonList = file.previewElement.querySelectorAll('[data-dz-view]');
+        for (var $i = 0; $i < viewButtonList.length; $i++) {
+            viewButtonList[$i].addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(fileUrl);
+                
+                return false;
+            });
+            //uploads/customer_files/Yll_Elshani_alex.pdf
+            console.log(file.fullname);
         }
     }
 </script>

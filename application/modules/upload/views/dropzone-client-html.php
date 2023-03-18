@@ -48,6 +48,10 @@
                             </div>
                         </div>
                         <div class="pull-left btn-group">
+                            <button data-dz-view class="btn btn-sm btn-success">
+                                <i class="fa fa-eye"></i>
+                                <span><?php _trans('View'); ?></span>
+                            </button>
                             <button data-dz-download class="btn btn-sm btn-primary">
                                 <i class="fa fa-download"></i>
                                 <span><?php _trans('download'); ?></span>

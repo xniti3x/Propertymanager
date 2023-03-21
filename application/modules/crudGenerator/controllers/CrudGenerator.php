@@ -10,6 +10,10 @@ class CrudGenerator extends Admin_Controller
         $this->load->helper('file');
     }
 
+    public function index()
+    {
+        redirect('crudGenerator/form');
+    }
     public function form()
     { 
         $this->layout->buffer('content', 'crudGenerator/form');
@@ -19,14 +23,14 @@ class CrudGenerator extends Admin_Controller
     public function formPost()
     {   
 
-        //$data['items']=explode(';', $this->input->post("item_terms"));
-        //$data['title']=$this->input->post("title");
+        $data['items']=explode(';', str_replace(' ', '',$this->input->post("item_terms")));
+        $data['title']=str_replace($this->input->post("title"));
 
-        $data['title']="Raum";
-        $data['items']=array("title",	"raumNr",	"raumFl");
+        //$data['title']="Raum";
+        //$data['items']=array("title",	"raumNr",	"raumFl");
 
        // Desired directory structure
-        $structure = APPPATH.'/modules/'.lcfirst($data['title']).'/';
+        $structure = APPPATH.'modules/'.lcfirst($data['title']).'/';
         $folder=array("controllers","models","views");
         // To create the nested structure, the $recursive parameter 
         // to mkdir() must be specified.
@@ -84,16 +88,21 @@ class CrudGenerator extends Admin_Controller
         $view_file=$structure.$folder[2]."/view.php";
         $add_file=$structure.$folder[2]."/add.php";
 
-        if ( !write_file($controller,$cont)){ $this->session->set_flashdata('alert_error', 'failed to add file'.$cont);}else{$this->session->set_flashdata('alert_success', 'Successfully added '.$controller);}
-        if ( !write_file($mdl_model,$mdl)){  $this->session->set_flashdata('alert_error', 'failed to add file'.$mdl_model);}else{$this->session->set_flashdata('alert_success', 'Successfully added '.$mdl_model);}
-        if ( !write_file($sql_file,$sqlFile)){  $this->session->set_flashdata('alert_error', 'failed to add file'.$sql_file);}else{ $this->db->query(file_get_contents($sql_file)); $this->session->set_flashdata('alert_success', 'Successfully added '.$sql_file);}
-        if ( !write_file($index_file,$index)){  $this->session->set_flashdata('alert_error', 'failed to add file'.$index_file);}else{$this->session->set_flashdata('alert_success', 'Successfully added '.$index_file);}
-        if ( !write_file($partial_table_file,$partial_table)){  $this->session->set_flashdata('alert_error', 'failed to add file'.$partial_table_file);}else{$this->session->set_flashdata('alert_success', 'Successfully added '.$partial_table_file);}
-        if ( !write_file($edit_file,$edit)){  $this->session->set_flashdata('alert_error', 'failed to add file'.$edit_file);}else{ $this->session->set_flashdata('alert_success', 'Successfully added '.$edit_file);}
-        if ( !write_file($view_file,$view)){  $this->session->set_flashdata('alert_error', 'failed to add file'.$view_file);}else{ $this->session->set_flashdata('alert_success', 'Successfully added '.$view_file);}
-        if ( !write_file($add_file,$add)){  $this->session->set_flashdata('alert_error', 'failed to add file'.$add_file);}else{ $this->session->set_flashdata('alert_success', 'Successfully added '.$add_file);}
+        $data['files']=array($controller,$mdl_model,$sql_file,$index_file,$partial_table_file,$edit_file,$view_file,$add_file);
+        if ( !write_file($controller,$cont) && 
+             !write_file($mdl_model,$mdl) &&
+             !write_file($sql_file,$sqlFile) && 
+             !write_file($index_file,$index) &&
+             !write_file($partial_table_file,$partial_table) &&
+             !write_file($edit_file,$edit) &&
+             !write_file($view_file,$view) &&
+             !write_file($add_file,$add)
+            ){ $this->session->set_flashdata('alert_error', 'failed to add files.');}else{$this->session->set_flashdata('alert_success', 'All Files Successfully added.');}
                
-        redirect('crudGenerator/form');
+        
+        $this->layout->buffer('content', 'crudGenerator/index',$data);
+        $this->layout->render();
+        
     }
 
 }

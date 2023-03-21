@@ -4,9 +4,9 @@
     <input type="hidden" name="<?php echo $this->config->item('csrf_token_name'); ?>"value="<?php echo $this->security->get_csrf_hash() ?>">
       
       <div class="form-group has-feedback">
-          <label for="create_invoice_client_id"><?php _trans('Mieter'); ?></label>
+          <label for="client_id"><?php _trans('Mieter'); ?></label>
           <div class="input-group">
-              <select name="client_id" id="create_invoice_client_id" class="client-id-select form-control"
+              <select name="client_id" id="client_id" class="client-id-select form-control"
                       autofocus="autofocus">
                   
                     <?php foreach($clients as $client){?>

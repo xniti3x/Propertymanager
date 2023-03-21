@@ -54,7 +54,6 @@ class Vertrag extends Admin_Controller
         $vertrag = $this->mdl_vertrag->getDataById($vertrag_id);
         $data['vermieter'] = $this->input->post('vermieter');
         $data['stockwerk'] = $this->input->post('stockwerk');
-        $data['mieter'] = $this->input->post('mieter');
         $data['wohnfleche'] = $this->input->post('wohnfleche');
         $data['wohnzweck'] = $this->input->post('wohnzweck');
         $data['adresse'] = $this->input->post('adresse');
@@ -77,7 +76,6 @@ class Vertrag extends Admin_Controller
     public function viewVertrag($vertrag_id) {
         $data = $this->mdl_vertrag->getDataById($vertrag_id);
         $client=$this->db->where('client_id', $data->client_id)->get('ip_clients')->row();
-
         $this->load->view('vertrag/view-vertrag', array("vertrag"=>$data,"client"=>$client));
     }
 

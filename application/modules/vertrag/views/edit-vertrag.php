@@ -2,7 +2,7 @@
 
   <h2>Update Vertrag</h2>  
 <form role="form" method="post" action="<?php echo site_url("vertrag/")?>editVertragPost" enctype="multipart/form-data">
-<input type="hidden" name="<?php echo $this->config->item('csrf_token_name'); ?>"value="<?php echo $this->security->get_csrf_hash() ?>">
+<input type="hidden" name="<?php echo $this->config->item('csrf_token_name'); ?>"value="<?php echo $this->security->get_csrf_hash(); ?>">
 
  <input type="hidden" value="<?php echo $vertrag->id ?>"   name="vertrag_id">
 

@@ -11,10 +11,10 @@
         </thead>
 
         <tbody>
-        VARIABLE_OPEN_PHP foreach ($<?php echo lcfirst($title); ?>s as $<?php echo lcfirst($title); ?>) { VARIABLE_CLOSE_PHP
+        VARIABLE_OPEN_PHP foreach ($<?php echo ($title); ?>s as $<?php echo ($title); ?>) { VARIABLE_CLOSE_PHP
             <tr>
                 <?php foreach($items as $item){ ?>
-                <td>VARIABLE_OPEN_PHP echo (<?php echo "$".lcfirst($title)."->".$item;?>);  VARIABLE_CLOSE_PHP</td>
+                <td>VARIABLE_OPEN_PHP echo (<?php echo "$".($title)."->".($title)."_".$item;?>);  VARIABLE_CLOSE_PHP</td>
                 <?php } ?>
 
                <td>
@@ -24,19 +24,19 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a target="blank" href="VARIABLE_OPEN_PHP echo site_url('<?php echo lcfirst($title); ?>/view/' . $<?php echo lcfirst($title); ?>->id); VARIABLE_CLOSE_PHP">
+                                <a target="blank" href="VARIABLE_OPEN_PHP echo site_url('<?php echo ($title); ?>/view/' . $<?php echo ($title); ?>-><?php echo ($title); ?>_id); VARIABLE_CLOSE_PHP">
                                     <i class="fa fa-eye fa-margin"></i>
                                     VARIABLE_OPEN_PHP _trans('view'); VARIABLE_CLOSE_PHP
                                 </a>
                             </li>
                             <li>
-                                <a target="blank" href="VARIABLE_OPEN_PHP echo site_url('<?php echo lcfirst($title); ?>/edit/' . $<?php echo lcfirst($title); ?>->id); VARIABLE_CLOSE_PHP">
+                                <a target="blank" href="VARIABLE_OPEN_PHP echo site_url('<?php echo ($title); ?>/edit/' . $<?php echo ($title); ?>-><?php echo ($title); ?>_id); VARIABLE_CLOSE_PHP">
                                     <i class="fa fa-edit fa-margin"></i>
                                     VARIABLE_OPEN_PHP _trans('edit'); VARIABLE_CLOSE_PHP
                                 </a>
                             </li>
                             <li>
-                                <form action="VARIABLE_OPEN_PHP echo site_url('<?php echo lcfirst($title); ?>/delete/' . $<?php echo lcfirst($title); ?>->id); VARIABLE_CLOSE_PHP"
+                                <form action="VARIABLE_OPEN_PHP echo site_url('<?php echo ($title); ?>/delete/' . $<?php echo ($title); ?>-><?php echo ($title); ?>_id); VARIABLE_CLOSE_PHP"
                                       method="POST">
                                     VARIABLE_OPEN_PHP _csrf_field(); VARIABLE_CLOSE_PHP
                                     <button type="submit" class="dropdown-button"

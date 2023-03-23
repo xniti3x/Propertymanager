@@ -18,6 +18,9 @@ class Mdl_Vertrag extends Response_Model{
         return $this->db->insert_id();
     }
 
+    public function getAllAppartmentVertragsWithClient(){
+        return $this->db->query("select * from ip_appartment,ip_vertrag,ip_clients where ip_appartment.client_id=ip_clients.client_id and ip_vertrag.client_id=ip_clients.client_id ;")->result();      
+    }
     public function getDataById($id) {
         $this->db->where('id', $id);
         return $this->db->get('ip_vertrag')->row();

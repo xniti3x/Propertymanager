@@ -23,14 +23,13 @@ class CrudGenerator extends Admin_Controller
     public function formPost()
     {   
 
-        $data['items']=explode(';', str_replace(' ', '',$this->input->post("item_terms")));
-        $data['title']=str_replace(' ','',$this->input->post("title"));
-
-        //$data['title']="Raum";
-        //$data['items']=array("title",	"raumNr",	"raumFl");
+        $title=lcfirst(str_replace(' ','',$this->input->post("title")));
+        $data['title']=$title;
+        $data['items']=explode(';',str_replace(' ', '',$this->input->post("item_terms")));
+        
 
        // Desired directory structure
-        $structure = APPPATH.'modules/'.lcfirst($data['title']).'/';
+        $structure = APPPATH.'modules/'.($title).'/';
         $folder=array("controllers","models","views");
         // To create the nested structure, the $recursive parameter 
         // to mkdir() must be specified.
@@ -46,13 +45,6 @@ class CrudGenerator extends Admin_Controller
         if (!mkdir($structure.$folder[2], 0777, true)) {
             die('Failed to create directories...'.$folder[2]);
         }}
-
-        $data["VARIABLEcontroller_Name"] = ucfirst($data['title']);
-        $data["VARIABLEcontroller_MdlName"] ="mdl_".lcfirst($data['title']);
-        $data["VARIABLEcontroller_ViewData"] =lcfirst($data['title']);
-        $data["VARIABLEcontroller_Items"] = $data['items'];
-        $data["VARIABLEmodel_TableName"] = "ip_".lcfirst($data['title']);
-        $data["VARIABLEmodel_Name"] = $data['title'];
                 
         $cont=$this->load->view('crudGenerator/generate/controller',$data,TRUE);
         $mdl=$this->load->view('crudGenerator/generate/model',$data,TRUE);
@@ -61,7 +53,6 @@ class CrudGenerator extends Admin_Controller
         $index=$this->load->view('crudGenerator/generate/index',$data,TRUE);
         $index=str_replace("VARIABLE_OPEN_PHP","<?php",$index);
         $index=str_replace("VARIABLE_CLOSE_PHP","?>",$index);
-        $index=str_replace("VARIABLEcontroller_ViewData",$data["VARIABLEcontroller_ViewData"],$index);
         
         $partial_table=$this->load->view('crudGenerator/generate/partial_table',$data,TRUE);
         $partial_table=str_replace("VARIABLE_OPEN_PHP","<?php",$partial_table);
@@ -79,11 +70,11 @@ class CrudGenerator extends Admin_Controller
         $add=str_replace("VARIABLE_OPEN_PHP","<?php",$add);
         $add=str_replace("VARIABLE_CLOSE_PHP","?>",$add);
         
-        $controller=$structure.$folder[0]."/".ucfirst($data['title']).".php";
-        $mdl_model=$structure.$folder[1]."/Mdl_".lcfirst($data['title']).".php";
+        $controller=$structure.$folder[0]."/".ucfirst($title).".php";
+        $mdl_model=$structure.$folder[1]."/Mdl_".($title).".php";
         $sql_file=$structure.$folder[2]."/sqlFile.sql";
         $index_file=$structure.$folder[2]."/index.php";
-        $partial_table_file=$structure.$folder[2]."/partial_".lcfirst($data['title'])."_table.php";
+        $partial_table_file=$structure.$folder[2]."/partial_".($title)."_table.php";
         $edit_file=$structure.$folder[2]."/edit.php";
         $view_file=$structure.$folder[2]."/view.php";
         $add_file=$structure.$folder[2]."/add.php";

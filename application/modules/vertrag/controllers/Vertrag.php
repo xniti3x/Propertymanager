@@ -6,17 +6,18 @@ class Vertrag extends Admin_Controller
     public function __construct() {
         parent::__construct();
         $this->load->model('mdl_vertrag');
+        $this->load->model('clients/mdl_clients');
+        $this->load->model('appartment/mdl_appartment');      
         $this->load->library('session');
     }
 
     public function index() { 
-        $data['vertrags'] = $this->mdl_vertrag->getAllWithClient();
+        $data['vertrags'] = $this->mdl_vertrag->getAllAppartmentVertragsWithClient();
         $this->layout->buffer('content', 'vertrag/index',$data);
         $this->layout->render();
     }
 
     public function addVertrag($id=null) {
-        $this->load->model('clients/mdl_clients');
         $this->layout->buffer('content', 'vertrag/add-vertrag',array("client_id"=>$id,"clients" => $this->mdl_clients->get()->result()));
         $this->layout->render();
     }

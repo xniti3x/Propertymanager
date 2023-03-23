@@ -64,7 +64,7 @@ class <?php echo ucfirst($title); ?> extends Admin_Controller{
     public function delete($id) {
         $delete = $this->mdl_<?php echo $title; ?>->delete($id);
         $this->session->set_flashdata('alert_error', '<?php echo $title; ?> deleted');
-        redirect('index');
+        redirect('<?php echo $title; ?>/index');
     }
     
 }

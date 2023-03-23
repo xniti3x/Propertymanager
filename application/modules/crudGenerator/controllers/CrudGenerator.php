@@ -24,7 +24,7 @@ class CrudGenerator extends Admin_Controller
     {   
 
         $data['items']=explode(';', str_replace(' ', '',$this->input->post("item_terms")));
-        $data['title']=str_replace($this->input->post("title"));
+        $data['title']=str_replace(' ','',$this->input->post("title"));
 
         //$data['title']="Raum";
         //$data['items']=array("title",	"raumNr",	"raumFl");
@@ -87,20 +87,23 @@ class CrudGenerator extends Admin_Controller
         $edit_file=$structure.$folder[2]."/edit.php";
         $view_file=$structure.$folder[2]."/view.php";
         $add_file=$structure.$folder[2]."/add.php";
-
-        $data['files']=array($controller,$mdl_model,$sql_file,$index_file,$partial_table_file,$edit_file,$view_file,$add_file);
-        if ( !write_file($controller,$cont) && 
-             !write_file($mdl_model,$mdl) &&
-             !write_file($sql_file,$sqlFile) && 
-             !write_file($index_file,$index) &&
-             !write_file($partial_table_file,$partial_table) &&
-             !write_file($edit_file,$edit) &&
-             !write_file($view_file,$view) &&
-             !write_file($add_file,$add)
-            ){ $this->session->set_flashdata('alert_error', 'failed to add files.');}else{$this->session->set_flashdata('alert_success', 'All Files Successfully added.');}
-               
         
-        $this->layout->buffer('content', 'crudGenerator/index',$data);
+        $files=array();
+             if(write_file($controller,$cont)){ array_push($files,$controller);} 
+             if(write_file($mdl_model,$mdl)){array_push($files,$mdl_model);}
+             if(write_file($sql_file,$sqlFile)){array_push($files,$sql_file);} 
+             if(write_file($index_file,$index)){array_push($files,$index_file);}
+             if(write_file($partial_table_file,$partial_table)){array_push($files,$partial_table_file);}
+             if(write_file($edit_file,$edit)) array_push($files,$edit_file);
+             if(write_file($view_file,$view)) array_push($files,$view_file);
+             if(write_file($add_file,$add)) array_push($files,$add_file);
+               
+        $this->layout->set(
+            array(
+                'files' => $files,
+            )
+        );
+        $this->layout->buffer('content', 'crudGenerator/index',$files);
         $this->layout->render();
         
     }

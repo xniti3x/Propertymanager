@@ -21,9 +21,9 @@ class <?php echo ucfirst($title); ?> extends Admin_Controller{
     
     public function addPost() {
         
-        <?php foreach($items as $item){ ?>
-        $data['<?php echo $title."_".$item; ?>'] = $this->input->post('<?php echo $title."_".$item; ?>');
-        <?php } ?>
+    <?php foreach($items as $item){ ?>
+    $data['<?php echo $title."_".$item; ?>'] = $this->input->post('<?php echo $title."_".$item; ?>');
+    <?php } ?>
 
         $this->mdl_<?php echo $title; ?>->insert($data);
         $this->session->set_flashdata('alert_success', 'Successfully added');
@@ -42,9 +42,9 @@ class <?php echo ucfirst($title); ?> extends Admin_Controller{
         $id = $this->input->post('id');
         $<?php echo $title; ?> = $this->mdl_<?php echo $title; ?>->getDataById($id);
         
-        <?php foreach($items as $item){ ?>
-        $data['<?php echo $title."_".$item; ?>'] = $this->input->post('<?php echo $title."_".$item; ?>');
-        <?php } ?>
+    <?php foreach($items as $item){ ?>
+    $data['<?php echo $title."_".$item; ?>'] = $this->input->post('<?php echo $title."_".$item; ?>');
+    <?php } ?>
 
         $edit = $this->mdl_<?php echo $title; ?>->update($id,$data);
         if ($edit) {

@@ -21,10 +21,6 @@
                         <i class="fa fa-user fa-margin"></i>
                         <span class="hidden-xs"><?php _trans('add_client'); ?></span>
                     </a>
-                    <a href="javascript:void(0)" class="create-quote btn btn-default">
-                        <i class="fa fa-file fa-margin"></i>
-                        <span class="hidden-xs"><?php _trans('create_quote'); ?></span>
-                    </a>
                     <a href="javascript:void(0)" class="create-invoice btn btn-default">
                         <i class="fa fa-file-text fa-margin"></i>
                         <span class="hidden-xs"><?php _trans('Miete erstellen'); ?></span>

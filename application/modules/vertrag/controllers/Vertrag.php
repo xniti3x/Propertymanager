@@ -12,7 +12,7 @@ class Vertrag extends Admin_Controller
     }
 
     public function index() { 
-        $data['vertrags'] = $this->mdl_vertrag->getAllAppartmentVertragsWithClient();
+        $data['vertrags'] = $this->mdl_vertrag->getAll();
         $this->layout->buffer('content', 'vertrag/index',$data);
         $this->layout->render();
     }

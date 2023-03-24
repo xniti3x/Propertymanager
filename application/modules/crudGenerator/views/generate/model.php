@@ -1,7 +1,7 @@
 <?php echo "<?php if (!defined('BASEPATH')) exit('No direct script access allowed');"; ?>
 
 
-class Mdl_<?php echo $title; ?> extends Response_Model {
+class Mdl_<?php echo ucfirst($title); ?> extends Response_Model {
 
     public $table = 'ip_<?php echo $title; ?>';
 

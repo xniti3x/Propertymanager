@@ -19,7 +19,7 @@ class Mdl_Vertrag extends Response_Model{
     }
 
     public function getAllAppartmentVertragsWithClient(){
-        return $this->db->query("select * from ip_appartment,ip_vertrag,ip_clients where ip_appartment.client_id=ip_clients.client_id and ip_vertrag.client_id=ip_clients.client_id ;")->result();      
+        return $this->db->query("select * from ip_appartment,ip_vertrag,ip_clients where  ip_vertrag.client_id=ip_clients.client_id and ip_vertrag.appartment_id=ip_appartment.appartment_id ;")->result();      
     }
     public function getAllVertragsWithClient(){
         return $this->db->query("select * from ip_vertrag,ip_clients where  ip_vertrag.client_id=ip_clients.client_id ;")->result();      

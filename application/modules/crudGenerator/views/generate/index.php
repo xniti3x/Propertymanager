@@ -2,7 +2,7 @@
     <h1 class="headerbar-title"><?php _trans('Manage '.$title); ?></h1>
 
     <div class="headerbar-item pull-right">
-        <a class="btn btn-sm btn-primary" target="blank" href="<?php echo site_url(($title).'/add'); ?>">
+        <a class="btn btn-sm btn-primary" target="blank" href="VARIABLE_OPEN_PHP echo site_url('<?php echo $title; ?>/add'); VARIABLE_CLOSE_PHP">
             <i class="fa fa-plus"></i> <?php _trans('new'); ?>
         </a>
     </div>

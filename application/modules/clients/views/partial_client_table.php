@@ -4,7 +4,7 @@
         <tr>
             <th><?php _trans('active'); ?></th>
             <th><?php _trans('Name des Mieters'); ?></th>
-            <th><?php _trans('Stockwerk'); ?></th>
+            <th><?php _trans('Wohnung'); ?></th>
             <th><?php _trans('Vertrag'); ?></th>
             <th class="amount"><?php _trans('balance'); ?></th>
             <th><?php _trans('options'); ?></th>
@@ -17,7 +17,7 @@
 					<?php echo ($record['client']->client_active) ? '<span class="label active">' . trans('yes') . '</span>' : '<span class="label inactive">' . trans('no') . '</span>'; ?>
 				</td>
                 <td><?php echo anchor('clients/view/' . $record['client']->client_id, htmlsc(format_client($record['client']))); ?></td>
-                <td><?php if(isset($record['vertrag']->stockwerk)) _htmlsc($record['vertrag']->stockwerk); ?></td>
+                <td><?php if(isset($record['appartment']->title)) _htmlsc($record['appartment']->title); ?></td>
                 <td><?php if(isset($record['vertrag']->begin) && isset($record['vertrag']->ende))_htmlsc($record['vertrag']->begin .' bis '.$record['vertrag']->ende); ?></td>
                 <td class="amount"><?php echo format_currency($record['client']->client_invoice_balance); ?></td>
                 <td>

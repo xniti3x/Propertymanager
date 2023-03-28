@@ -43,12 +43,17 @@ class Clients extends Admin_Controller
         }
 
         $this->load->model('vertrag/mdl_vertrag');
+        $this->load->model('appartment/mdl_appartment');
         $this->mdl_clients->with_total_balance()->paginate(site_url('clients/status/' . $status), $page);
         $clients = $this->mdl_clients->result();
         $records=[];
         foreach($clients as $c){
             $vertrag=$this->mdl_vertrag->getDataByClientId($c->client_id);
-            $records[]=array("client"=>$c,"vertrag"=>$vertrag);            
+            $appartment=null;
+            if(isset($vertrag->appartment_id)){
+                $appartment=$this->mdl_appartment->getDataById($vertrag->appartment_id);
+            }
+            $records[]=array("client"=>$c,"vertrag"=>$vertrag,"appartment"=>$appartment);            
         }
         
         $this->layout->set(

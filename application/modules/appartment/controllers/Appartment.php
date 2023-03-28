@@ -4,7 +4,6 @@ class Appartment extends Admin_Controller{
  public function __construct() {
         parent::__construct();
         $this->load->model('mdl_appartment');
-        $this->load->model('mdl_clients');
         $this->load->library('session');
     }
 
@@ -21,13 +20,10 @@ class Appartment extends Admin_Controller{
     
     public function addPost() {
         
-        $data['title'] = $this->input->post('title');
-        $data['raume'] = $this->input->post('raume');
-        $data['qm'] = $this->input->post('qm');
-        $data['kellerraum'] = $this->input->post('kellerraum');
-        $data['stellplatz'] = $this->input->post('stellplatz');
-        $data['client_id'] = $this->input->post('client_id');
-        
+        $data['appartment_title'] = $this->input->post('appartment_title');
+        $data['appartment_raume'] = $this->input->post('appartment_raume');
+        $data['appartment_qm'] = $this->input->post('appartment_qm');
+    
         $this->mdl_appartment->insert($data);
         $this->session->set_flashdata('alert_success', 'Successfully added');
         redirect('appartment/index');
@@ -45,13 +41,10 @@ class Appartment extends Admin_Controller{
         $id = $this->input->post('id');
         $appartment = $this->mdl_appartment->getDataById($id);
         
-                $data['title'] = $this->input->post('title');
-                $data['raume'] = $this->input->post('raume');
-                $data['qm'] = $this->input->post('qm');
-                $data['kellerraum'] = $this->input->post('kellerraum');
-                $data['stellplatz'] = $this->input->post('stellplatz');
-                $data['client_id'] = $this->input->post('client_id');
-        
+        $data['appartment_title'] = $this->input->post('appartment_title');
+        $data['appartment_raume'] = $this->input->post('appartment_raume');
+        $data['appartment_qm'] = $this->input->post('appartment_qm');
+    
         $edit = $this->mdl_appartment->update($id,$data);
         if ($edit) {
             $this->session->set_flashdata('alert_success', 'Successfully updated');
@@ -70,7 +63,7 @@ class Appartment extends Admin_Controller{
     public function delete($id) {
         $delete = $this->mdl_appartment->delete($id);
         $this->session->set_flashdata('alert_error', 'appartment deleted');
-        redirect('index');
+        redirect('appartment/index');
     }
     
 }

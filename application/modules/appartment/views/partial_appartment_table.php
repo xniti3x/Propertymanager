@@ -3,19 +3,16 @@
 
         <thead>
         <tr>
-            <th>title</th><th>raume</th><th>qm</th><th>kellerraum</th><th>stellplatz</th><th>client_id</th>            <th><?php _trans('options'); ?></th>
+            <th>title</th><th>raume</th><th>qm</th>            <th><?php _trans('options'); ?></th>
         </tr>
         </thead>
 
         <tbody>
         <?php foreach ($appartments as $appartment) { ?>
             <tr>
-                                <td><?php echo ($appartment->title);  ?></td>
-                                <td><?php echo ($appartment->raume);  ?></td>
-                                <td><?php echo ($appartment->qm);  ?></td>
-                                <td><?php echo ($appartment->kellerraum);  ?></td>
-                                <td><?php echo ($appartment->stellplatz);  ?></td>
-                                <td><?php echo ($appartment->client_id);  ?></td>
+                                <td><?php echo ($appartment->appartment_title);  ?></td>
+                                <td><?php echo ($appartment->appartment_raume);  ?></td>
+                                <td><?php echo ($appartment->appartment_qm);  ?></td>
                 
                <td>
                     <div class="options btn-group">
@@ -24,19 +21,19 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a target="blank" href="<?php echo site_url('appartment/view/' . $appartment->id); ?>">
+                                <a target="blank" href="<?php echo site_url('appartment/view/' . $appartment->appartment_id); ?>">
                                     <i class="fa fa-eye fa-margin"></i>
                                     <?php _trans('view'); ?>
                                 </a>
                             </li>
                             <li>
-                                <a target="blank" href="<?php echo site_url('appartment/edit/' . $appartment->id); ?>">
+                                <a target="blank" href="<?php echo site_url('appartment/edit/' . $appartment->appartment_id); ?>">
                                     <i class="fa fa-edit fa-margin"></i>
                                     <?php _trans('edit'); ?>
                                 </a>
                             </li>
                             <li>
-                                <form action="<?php echo site_url('appartment/delete/' . $appartment->id); ?>"
+                                <form action="<?php echo site_url('appartment/delete/' . $appartment->appartment_id); ?>"
                                       method="POST">
                                     <?php _csrf_field(); ?>
                                     <button type="submit" class="dropdown-button"

@@ -27,12 +27,21 @@
                         <i class="visible-md-inline fa fa-file-text"></i>
                     </a>
                 </li>
+                
+                <li class="dropdown">
+                    <a href="<?php echo site_url('appartment/index'); ?>">
+                        <span class="hidden-md"><?php _trans('Appartments'); ?></span>
+                        <i class="visible-md-inline fa fa-house"></i>
+                    </a>
+                </li>
+
                 <li class="dropdown">
                     <a href="<?php echo site_url('vertrag/index'); ?>">
                         <span class="hidden-md"><?php _trans('Verträge'); ?></span>
                         <i class="visible-md-inline fa fa-file-text"></i>
                     </a>
                 </li>
+                
                 <li class="dropdown">
                     <a href="<?php echo site_url('payments/index'); ?>">
                             <span class="hidden-md"><?php _trans('payments'); ?></span>

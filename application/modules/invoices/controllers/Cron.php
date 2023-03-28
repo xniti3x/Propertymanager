@@ -54,7 +54,9 @@ class Cron extends Base_Controller
                 'invoice_url_key' => $this->mdl_invoices->get_url_key(),
                 'invoice_terms' => $invoice->invoice_terms,
                 'invoice_discount_amount' => $invoice->invoice_discount_amount,
-                'invoice_discount_percent' => $invoice->invoice_discount_percent
+                'invoice_discount_percent' => $invoice->invoice_discount_percent,
+                'invoice_period_start' => date('Y-m-d', strtotime("+1 months", strtotime($invoice->invoice_period_start))),
+                'invoice_period_end' => date('Y-m-d', strtotime("+1 months", strtotime($invoice->invoice_period_end))),
             );
 
             // This is the new invoice id

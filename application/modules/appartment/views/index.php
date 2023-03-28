@@ -1,8 +1,8 @@
 <div id="headerbar">
-    <h1 class="headerbar-title">Manage Appartment</h1>
+    <h1 class="headerbar-title">Manage appartment</h1>
 
     <div class="headerbar-item pull-right">
-        <a class="btn btn-sm btn-primary" target="blank" href="http://89.58.2.112:8105/index.php/appartment/add">
+        <a class="btn btn-sm btn-primary" target="blank" href="<?php echo site_url('appartment/add'); ?>">
             <i class="fa fa-plus"></i> Neu        </a>
     </div>
 

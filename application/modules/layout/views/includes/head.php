@@ -48,6 +48,10 @@
             $('#modal-placeholder').load("<?php echo site_url('invoices/ajax/modal_create_invoice'); ?>");
         });
 
+        $(document).on('click', '.create-appartment', function () {
+            $('#modal-placeholder').load("<?php echo site_url('appartment/modal_create_appartment'); ?>");
+        });
+
         $(document).on('click', '.create-quote', function () {
             $('#modal-placeholder').load("<?php echo site_url('quotes/ajax/modal_create_quote'); ?>");
         });

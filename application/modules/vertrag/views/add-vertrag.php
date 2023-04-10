@@ -4,7 +4,8 @@
     <input type="hidden" name="<?php echo $this->config->item('csrf_token_name'); ?>" value="<?php echo $this->security->get_csrf_hash() ?>">
 
     <div class="form-group has-feedback">
-      <label for="client_id"><?php _trans('Mieter'); ?></label>
+      
+      <label for="client_id"><?php _trans('Mieter'); ?><a href="<?php echo site_url("clients/form"); ?>"><i class="fa fa-plus"></i></a></label>
       <div class="input-group">
         <select name="client_id" id="client_id" class="client-id-select form-control" autofocus="autofocus">
           <?php foreach ($clients as $client) { ?>
@@ -16,7 +17,8 @@
       </div>
     </div>
     <div class="form-group has-feedback">
-      <label for="appartment_id"><?php _trans('Appartment'); ?></label>
+      
+      <label for="appartment_id"><?php _trans('Appartment'); ?><a class="create-appartment" href="#"><i class="fa fa-plus"></i></a></label>
       <div class="input-group">
         <select name="appartment_id" id="appartment_id" class="client-id-select form-control" autofocus="autofocus">
           <?php foreach ($appartments as $item) { ?>

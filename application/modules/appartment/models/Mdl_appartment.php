@@ -30,4 +30,23 @@ class Mdl_Appartment extends Response_Model {
         return true;
     }
 
+    /**
+     * @return array
+     */
+    public function validation_rules()
+    {
+        return array(
+            'appartment_title' => array(
+                'field' => 'appartment_title',
+                'label' => 'title',
+                'rules' => 'required'
+            ),
+            'appartment_qm' => array(
+                'field' => 'appartment_qm',
+                'label' => trans('qm'),
+                'rules' => 'required'
+            )
+        );
+    }
+
 }

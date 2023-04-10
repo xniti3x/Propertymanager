@@ -24,9 +24,22 @@ class Appartment extends Admin_Controller{
         $data['appartment_raume'] = $this->input->post('appartment_raume');
         $data['appartment_qm'] = $this->input->post('appartment_qm');
     
-        $this->mdl_appartment->insert($data);
-        $this->session->set_flashdata('alert_success', 'Successfully added');
-        redirect('appartment/index');
+        
+        //$this->session->set_flashdata('alert_success', 'Successfully added');
+        //redirect('appartment/index');
+        if ($this->mdl_appartment->run_validation()) {
+        $response = [
+            'success' => 1,
+            'appartmnet_id' => $this->mdl_appartment->insert($data),
+        ];
+    } else {
+        $this->load->helper('json_error');
+        $response = [
+            'success' => 0,
+            'validation_errors' => json_errors(),
+        ];
+    }
+        echo json_encode($response);
     }
     
     public function edit($id) {
@@ -64,6 +77,19 @@ class Appartment extends Admin_Controller{
         $delete = $this->mdl_appartment->delete($id);
         $this->session->set_flashdata('alert_error', 'appartment deleted');
         redirect('appartment/index');
+    }
+
+    public function addm(){
+        $response = [
+            'success' => 1,
+            'appartment_id' => $invoice_id,
+        ];
+    }
+    public function modal_create_appartment()
+    {
+        $this->load->module('layout');
+    
+        $this->layout->load_view('appartment/modal_create_appartment');
     }
     
 }

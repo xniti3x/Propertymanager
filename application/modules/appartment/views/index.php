@@ -2,7 +2,7 @@
     <h1 class="headerbar-title">Manage appartment</h1>
 
     <div class="headerbar-item pull-right">
-        <a class="btn btn-sm btn-primary" target="blank" href="<?php echo site_url('appartment/add'); ?>">
+        <a class="btn btn-sm btn-primary create-appartment" href="#">
             <i class="fa fa-plus"></i> Neu        </a>
     </div>
 

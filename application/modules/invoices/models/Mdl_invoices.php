@@ -164,7 +164,10 @@ class Mdl_Invoices extends Response_Model
     {
 
         $invoice_id = parent::save(null, $db_array);
-
+        $this->db->set('invoice_period_end', date('Y-m-d'));
+        $this->db->set('invoice_period_start', date('Y-m-d'));
+        $this->db->where('ip_invoices.invoice_id', $invoice_id);
+        $this->db->update('ip_invoices');
         $inv = $this->where('ip_invoices.invoice_id', $invoice_id)->get()->row();
         $invoice_group = $inv->invoice_group_id;
 

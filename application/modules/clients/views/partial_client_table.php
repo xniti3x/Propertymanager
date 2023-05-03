@@ -17,7 +17,7 @@
 					<?php echo ($record['client']->client_active) ? '<span class="label active">' . trans('yes') . '</span>' : '<span class="label inactive">' . trans('no') . '</span>'; ?>
 				</td>
                 <td><?php echo anchor('clients/view/' . $record['client']->client_id, htmlsc(format_client($record['client']))); ?></td>
-                <td><?php if(isset($record['appartment']->title)) _htmlsc($record['appartment']->title); ?></td>
+                <td><?php if(isset($record['appartment']->appartment_title)) _htmlsc($record['appartment']->appartment_title); ?></td>
                 <td><?php if(isset($record['vertrag']->begin) && isset($record['vertrag']->ende))_htmlsc($record['vertrag']->begin .' bis '.$record['vertrag']->ende); ?></td>
                 <td class="amount"><?php echo format_currency($record['client']->client_invoice_balance); ?></td>
                 <td>

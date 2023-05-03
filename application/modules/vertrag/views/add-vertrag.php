@@ -22,7 +22,7 @@
       <div class="input-group">
         <select name="appartment_id" id="appartment_id" class="client-id-select form-control" autofocus="autofocus">
           <?php foreach ($appartments as $item) { ?>
-            <option value="<?php echo $item->appartment_id; ?>"><?php echo $item->appartment_id; ?><?php echo $item->appartment_title; ?></option>
+            <option value="<?php echo $item->appartment_id; ?>"><?php echo $item->appartment_title; ?></option>
           <?php } ?>
 
         </select>

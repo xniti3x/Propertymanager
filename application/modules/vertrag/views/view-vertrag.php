@@ -25,7 +25,7 @@
         <table class="table table-bordered">
             <tr>
                 <td><b>Vermieter:</b> <u><?php echo $vertrag->vermieter; ?></u></td>
-                <td><b>Mieter:<u></b><?php echo $client->client_name; ?></u></td>
+                <td><b>Mieter:<u></b><a href="<?php echo site_url('clients/view/').$client->client_id; ?>"><?php echo $client->client_name; ?></a></u></td>
             </tr>
         </table>
         <table class="table table-bordered">

@@ -81,8 +81,8 @@ class Mdl_Setup extends CI_Model
         );
 
         $this->db->insert('ip_invoice_groups', array(
-                'invoice_group_name' => 'Quote Default',
-                'invoice_group_prefix' => 'QUO',
+                'invoice_group_name' => 'Kaution',
+                'invoice_group_prefix' => 'KTN',
                 'invoice_group_next_id' => 1
             )
         );
@@ -105,7 +105,6 @@ class Mdl_Setup extends CI_Model
 
         $default_settings = array(
             'default_language' => $this->session->userdata('ip_lang'),
-            'date_format' => 'm/d/Y',
             'currency_symbol' => '€',
             'currency_symbol_placement' => 'before',
             'currency_code' => 'EUR',

@@ -63,7 +63,7 @@
                     </ul>
                 </li>
 
-                <li class="dropdown <?php echo get_setting('projects_enabled') == 1 ?: 'hidden'; ?>">
+                <li class="hidden dropdown <?php echo get_setting('projects_enabled') == 1 ?: 'hidden'; ?>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-caret-down"></i> &nbsp;
                         <span class="hidden-md"><?php _trans('tasks'); ?></span>
@@ -76,9 +76,9 @@
                         <li><?php echo anchor('projects/form', trans('create_project')); ?></li>
                         <li><?php echo anchor('projects/index', trans('view_projects')); ?></li>
                     </ul>
-                </li>
+                </li> 
 
-                <li class="dropdown">
+                 <li class="dropdown hidden">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-caret-down"></i> &nbsp;
                         <span class="hidden-md"><?php _trans('reports'); ?></span>
@@ -90,7 +90,7 @@
                         <li><?php echo anchor('reports/sales_by_client', trans('sales_by_client')); ?></li>
                         <li><?php echo anchor('reports/sales_by_year', trans('sales_by_date')); ?></li>
                     </ul>
-                </li>
+                </li> 
 
             </ul>
 

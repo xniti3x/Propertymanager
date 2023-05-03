@@ -9,7 +9,7 @@
       <div class="input-group">
         <select name="client_id" id="client_id" class="client-id-select form-control" autofocus="autofocus">
           <?php foreach ($clients as $client) { ?>
-            <option <?php echo $client->client_id == $client_id ? "selected" : ""; ?> value="<?php echo $client->client_id; ?>"><?php echo $client->client_id; ?><?php _htmlsc(format_client($client)); ?></option>
+            <option <?php echo $client->client_id == $client_id ? "selected" : ""; ?> value="<?php echo $client->client_id; ?>"><?php _htmlsc(format_client($client)); ?></option>
           <?php } ?>
 
         </select>

@@ -4,7 +4,7 @@
         <thead>
         <tr>
             <th><?php _trans('status'); ?></th>
-            <th><?php _trans('Miete'); ?></th>
+            <th><?php _trans('Rechnungen'); ?></th>
             <th><?php _trans('created'); ?></th>
             <th><?php _trans('Zeitraum'); ?></th>
             <th><?php _trans('Name des Mieters'); ?></th>

@@ -97,7 +97,7 @@
                             class="form-control simple-select">
                         <option value=""><?php _trans('none'); ?></option>
 
-                        <optgroup label="<?php _trans('Mieten'); ?>">
+                        <optgroup label="<?php _trans('Rechnungen'); ?>">
                             <?php foreach ($invoice_templates as $template): ?>
                                 <option class="hidden-invoice" value="<?php echo $template; ?>"
                                     <?php check_select($selected_pdf_template, $template); ?>>

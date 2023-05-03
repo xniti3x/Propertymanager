@@ -13,7 +13,7 @@
             </a>
         </li>
         <li>
-            <a href="<?php echo site_url('invoices/index'); ?>" title="<?php _trans('Mieten'); ?>"
+            <a href="<?php echo site_url('invoices/index'); ?>" title="<?php _trans('Rechnungen'); ?>"
                class="tip" data-placement="right">
                 <i class="fa fa-file-text"></i>
             </a>

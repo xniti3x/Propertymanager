@@ -25,7 +25,7 @@
                 <th><?php _trans('id'); ?></th>
                 <th><?php _trans('date'); ?></th>
                 <th><?php _trans('clients'); ?></th>
-                <th><?php _trans('Mieten'); ?></th>
+                <th><?php _trans('Rechnungen'); ?></th>
                 <th><?php _trans('invoice_items'); ?></th>
                 <th><?php _trans('payments'); ?></th>
                 <th><?php _trans('options'); ?></th>

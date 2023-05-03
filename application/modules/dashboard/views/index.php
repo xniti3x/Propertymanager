@@ -78,7 +78,7 @@
 
             <?php if (empty($overdue_invoices)) { ?>
                 <div class="panel panel-default panel-heading">
-                    <span class="text-muted"><?php _trans('Keine Überfälligen Mieten'); ?></span>
+                    <span class="text-muted"><?php _trans('Keine Überfälligen Rechnungen'); ?></span>
                 </div>
             <?php } else {
                 $overdue_invoices_total = 0;
@@ -87,7 +87,7 @@
                 }
                 ?>
                 <div class="panel panel-danger panel-heading">
-                    <?php echo anchor('invoices/status/overdue', '<i class="fa fa-external-link"></i> ' . trans('Überfällige Mieten'), 'class="text-danger"'); ?>
+                    <?php echo anchor('invoices/status/overdue', '<i class="fa fa-external-link"></i> ' . trans('Überfällige Rechnungen'), 'class="text-danger"'); ?>
                     <span class="pull-right text-danger">
                         <?php echo format_currency($overdue_invoices_total); ?>
                     </span>
@@ -100,7 +100,7 @@
             <div id="panel-recent-invoices" class="panel panel-default">
 
                 <div class="panel-heading">
-                    <b><i class="fa fa-history fa-margin"></i> <?php _trans('Offene Mieten'); ?></b>
+                    <b><i class="fa fa-history fa-margin"></i> <?php _trans('Offene Rechnungen'); ?></b>
                 </div>
 
                 <div class="table-responsive">

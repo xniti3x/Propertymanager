@@ -148,7 +148,7 @@
         </div>
 
         <div class="form-group">
-            <label for="tags_invoice"><?php _trans('Mieten'); ?></label>
+            <label for="tags_invoice"><?php _trans('Rechnungen'); ?></label>
             <select id="tags_invoice" class="tag-select form-control">
                 <option value="{{{invoice_number}}}">
                     <?php _trans('id'); ?>

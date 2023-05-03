@@ -1,6 +1,6 @@
 <div id="headerbar">
 
-    <h1 class="headerbar-title"><?php _trans('Mieten'); ?></h1>
+    <h1 class="headerbar-title"><?php _trans('Rechnungen'); ?></h1>
 
     <div class="headerbar-item pull-right">
         <button type="button" class="btn btn-default btn-sm submenu-toggle hidden-lg"

@@ -47,4 +47,46 @@ class Get extends Base_Controller
         exit;
     }
 
+    public function fireNotification($cron_key)
+    {
+        $this->load->model('invoices/mdl_invoices');
+        $this->load->model('settings/mdl_settings');
+        
+       if (strcmp($cron_key, $this->mdl_settings->get('cron_key')) !== 0) { exit;} 
+        $url = $this->mdl_settings->get('ntfy_url');
+        date_default_timezone_set('Europe/Berlin');
+        $this->mdl_invoices->is_draft();
+        $this->mdl_invoices->paginate(site_url('invoices/status/' . 'draft'), 0);
+        $items = $this->mdl_invoices->result();
+
+        
+        $i=0;
+        foreach($items as $item){
+            $header=array(
+                "Title:".$item->invoice_number." - Miete - ".substr($item->client_name, 0, 20)."..",
+                "Priority:3",
+                "Tags:memo",
+                "Actions:view, Anzeigen, ".site_url("invoices/view/".$item->invoice_id),
+                "Authorization: ".$this->mdl_settings->get('ntfy_basic_auth'),
+                "Content-Type: text/plain"
+            );
+            $body="Zeitraum: ".$item->invoice_period_start." bis ".$item->invoice_period_end." Offenerbetrag: ".$item->invoice_balance;
+            $this->httpPost($url,$body,$header);
+            if($i>3) break; $i++;
+        }
+    }
+    
+    private function httpPost($url, $data,$header)
+    {
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HEADER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($curl);
+        curl_close($curl);
+        return $response;
+    }
+
 }

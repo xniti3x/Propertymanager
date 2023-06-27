@@ -1,33 +1,31 @@
 <script>
-    $(function () {
-        $('#save_client_note').click(function () {
-            $.post('<?php echo site_url('clients/ajax/save_client_note'); ?>',
-                {
-                    client_id: $('#client_id').val(),
-                    client_note: $('#client_note').val()
-                }, function (data) {
-                    <?php echo(IP_DEBUG ? 'console.log(data);' : ''); ?>
-                    var response = JSON.parse(data);
-                    if (response.success === 1) {
-                        // The validation was successful
-                        $('.control-group').removeClass('error');
-                        $('#client_note').val('');
+    $(function() {
+        $('#save_client_note').click(function() {
+            $.post('<?php echo site_url('clients/ajax/save_client_note'); ?>', {
+                client_id: $('#client_id').val(),
+                client_note: $('#client_note').val()
+            }, function(data) {
+                <?php echo (IP_DEBUG ? 'console.log(data);' : ''); ?>
+                var response = JSON.parse(data);
+                if (response.success === 1) {
+                    // The validation was successful
+                    $('.control-group').removeClass('error');
+                    $('#client_note').val('');
 
-                        // Reload all notes
-                        $('#notes_list').load("<?php echo site_url('clients/ajax/load_client_notes'); ?>",
-                            {
-                                client_id: <?php echo $client->client_id; ?>
-                            }, function (response) {
-                                <?php echo(IP_DEBUG ? 'console.log(response);' : ''); ?>
-                            });
-                    } else {
-                        // The validation was not successful
-                        $('.control-group').removeClass('error');
-                        for (var key in response.validation_errors) {
-                            $('#' + key).parent().addClass('has-error');
-                        }
+                    // Reload all notes
+                    $('#notes_list').load("<?php echo site_url('clients/ajax/load_client_notes'); ?>", {
+                        client_id: <?php echo $client->client_id; ?>
+                    }, function(response) {
+                        <?php echo (IP_DEBUG ? 'console.log(response);' : ''); ?>
+                    });
+                } else {
+                    // The validation was not successful
+                    $('.control-group').removeClass('error');
+                    for (var key in response.validation_errors) {
+                        $('#' + key).parent().addClass('has-error');
                     }
-                });
+                }
+            });
         });
     });
 </script>
@@ -47,27 +45,24 @@ foreach ($custom_fields as $custom_field) {
 
     <div class="headerbar-item pull-right">
         <div class="btn-group btn-group-sm">
-            <a href="#" class="btn btn-default client-create-invoice"
-               data-client-id="<?php echo $client->client_id; ?>">
+            <a href="#" class="btn btn-default client-create-invoice" data-client-id="<?php echo $client->client_id; ?>">
                 <i class="fa fa-file-text"></i> <?php _trans('Rechnung erstellen'); ?></a>
-            <a href="<?php echo site_url('clients/form/' . $client->client_id); ?>"
-               class="btn btn-default">
+            <a href="<?php echo site_url('clients/form/' . $client->client_id); ?>" class="btn btn-default">
                 <i class="fa fa-edit"></i> <?php _trans('edit'); ?>
             </a>
-            <a class="btn btn-danger"
-               href="<?php echo site_url('clients/delete/' . $client->client_id); ?>"
-               onclick="return confirm('<?php _trans('delete_client_warning'); ?>');">
+            <a class="btn btn-danger" href="<?php echo site_url('clients/delete/' . $client->client_id); ?>" onclick="return confirm('<?php _trans('delete_client_warning'); ?>');">
                 <i class="fa fa-trash-o"></i> <?php _trans('delete'); ?>
             </a>
         </div>
     </div>
     <div class="headerbar-item pull-left">
         <div class="btn-group btn-group-sm index-options">
-        <?php foreach($allclients as $elem_client){ if($elem_client->client_id==$client->client_id) continue;?>
-            <a href="<?php echo site_url('clients/view/' . $elem_client->client_id); ?>" class="btn btn-default">
-            <?php _htmlsc(($elem_client->client_name)); ?>
-            </a>
-        <?php } ?>
+            <?php foreach ($allclients as $elem_client) {
+                if ($elem_client->client_id == $client->client_id) continue; ?>
+                <a href="<?php echo site_url('clients/view/' . $elem_client->client_id); ?>" class="btn btn-default">
+                    <?php _htmlsc(($elem_client->client_name)); ?>
+                </a>
+            <?php } ?>
         </div>
     </div>
 </div>
@@ -87,41 +82,48 @@ foreach ($custom_fields as $custom_field) {
 
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
-                <h2> <?php echo $client->client_name; ?></h2> <br><?php echo _trans('iban').": ".$client->client_iban; ?> <hr>
+                    <h2> <?php echo $client->client_name; ?></h2> <br><?php echo _trans('iban') . ": " . $client->client_iban; ?>
+                    <hr>
                     <?php $this->layout->load_view('upload/dropzone-client-html'); ?>
                     <?php $this->layout->load_view('clients/partial_client_contract'); ?>
-                </div> 
+                </div>
                 <div class="col-xs-12 col-sm-6 col-md-6">
                     <?php echo $invoice_client_table; ?>
                     <table class="table table-bordered no-margin">
-                            <tr>
-                                <th>
-                                    <?php _trans('total_billed'); ?>
-                                </th>
-                                <td class="td-amount">
-                                    <?php echo format_currency($client->client_invoice_total); ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <?php _trans('total_paid'); ?>
-                                </th>
-                                <th class="td-amount">
-                                    <?php echo format_currency($client->client_invoice_paid); ?>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <?php _trans('total_balance'); ?>
-                                </th>
-                                <td class="td-amount">
-                                    <?php echo format_currency($client->client_invoice_balance); ?>
-                                </td>
-                            </tr>
-                        </table>
+                        <tr>
+                            <th>
+                                <?php _trans('total_billed'); ?>
+                            </th>
+                            <td class="td-amount">
+                                <?php echo format_currency($client->client_invoice_total); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <?php _trans('total_paid'); ?>
+                            </th>
+                            <th class="td-amount">
+                                <?php echo format_currency($client->client_invoice_paid); ?>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <?php _trans('total_balance'); ?>
+                            </th>
+                            <td class="td-amount">
+                                <?php echo format_currency($client->client_invoice_balance); ?>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
+
+                <div class="col-xs-12 col-md-6">
+                <?php $this->layout->load_view('clients/partial_client_transactions'); ?>
+                </div>
+
             </div>
-            <?php if ($client->client_surname != ""): //Client is not a company ?>
+            <?php if ($client->client_surname != "") : //Client is not a company 
+            ?>
                 <hr>
 
                 <div class="row">
@@ -142,7 +144,7 @@ foreach ($custom_fields as $custom_field) {
                                         <th><?php _trans('gender'); ?></th>
                                         <td><?php echo format_gender($client->client_gender) ?></td>
                                     </tr>
-                                    <?php if ($this->mdl_settings->setting('sumex') == '1'): ?>
+                                    <?php if ($this->mdl_settings->setting('sumex') == '1') : ?>
                                         <tr>
                                             <th><?php _trans('sumex_ssn'); ?></th>
                                             <td><?php echo format_avs($client->client_avs) ?></td>
@@ -211,6 +213,7 @@ foreach ($custom_fields as $custom_field) {
 
                         </div>
                     </div>
+
                 </div>
             <?php endif; ?>
 

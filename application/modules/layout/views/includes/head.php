@@ -31,6 +31,13 @@
     <?php } ?>
 
     $(function () {
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#bank-table tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
         $('.nav-tabs').tab();
         $('.tip').tooltip();
 

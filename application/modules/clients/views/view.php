@@ -87,7 +87,7 @@ foreach ($custom_fields as $custom_field) {
 
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
-                <h2> <?php echo $client->client_name; ?></h2> <hr>
+                <h2> <?php echo $client->client_name; ?></h2> <br><?php echo _trans('iban').": ".$client->client_iban; ?> <hr>
                     <?php $this->layout->load_view('upload/dropzone-client-html'); ?>
                     <?php $this->layout->load_view('clients/partial_client_contract'); ?>
                 </div> 

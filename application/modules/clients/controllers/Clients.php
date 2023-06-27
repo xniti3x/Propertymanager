@@ -200,6 +200,7 @@ class Clients extends Admin_Controller
         $this->load->model('custom_fields/mdl_custom_fields');
         $this->load->model('custom_fields/mdl_client_custom');
         $this->load->model('vertrag/mdl_vertrag');
+        $this->load->model('banking/mdl_bank_api');
 
         $client = $this->mdl_clients
             ->with_total()
@@ -228,6 +229,7 @@ class Clients extends Admin_Controller
                 'quote_statuses' => $this->mdl_quotes->statuses(),
                 'invoice_statuses' => $this->mdl_invoices->statuses(),
                 'vertrag' => $this->mdl_vertrag->getDataByClientId($client_id),
+                'transactions' => $this->mdl_bank_api->getAllTransactionsBy($client->client_iban),
                 'allclients' => $allClients
             )
         );

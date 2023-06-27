@@ -142,4 +142,9 @@ public function saveTransactionFile($array){
         }
         return $iban;
     }
+
+    public function getAllTransactionsBy($iban){
+        $sql="select * from ip_transactions where iban='".$iban."'";
+        return $this->db->query($sql)->result();
+    }
 }

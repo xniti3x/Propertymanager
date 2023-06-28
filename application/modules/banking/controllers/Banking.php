@@ -194,4 +194,13 @@ class Banking extends Admin_Controller
     private function getTransactionFromFile(){
         return json_decode(file_get_contents("transaction_data.json"))->data;
     }
+
+    public function transaction($id){
+        $note=$this->input->post("note");
+        $this->db->set('note', $note);
+        $this->db->where('transactionId', $id);
+        $this->db->update('ip_transactions');
+        $this->session->set_flashdata('alert_success', trans('record_successfully_updated'));
+        redirect("banking/view/".$id);
+    }
 }

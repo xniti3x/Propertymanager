@@ -216,7 +216,7 @@ class Clients extends Admin_Controller
         if (!$client) {
             show_404();
         }
-        $allClients=$this->mdl_clients->where('client_active',1)->limit(7)->get()->result();
+        $allClients=$this->mdl_clients->where('client_active',1)->get()->result();
 
         $this->layout->set(
             array(

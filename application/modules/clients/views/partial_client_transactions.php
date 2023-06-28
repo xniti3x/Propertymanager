@@ -17,10 +17,11 @@
                 <tbody>
                     <?php foreach ($transactions as $transaction) { ?>
                         <tr>
-                            <td><?php echo $transaction->id; ?></td>
+                            <td><a href="<?php echo site_url("banking/view/".$transaction->transactionId); ?>"><?php echo $transaction->id; ?></a></td>
                             <td><?php echo $transaction->bookingDate; ?></td>
                             <td><?php echo $transaction->transactionAmount; ?>€</td>
                             <td><?php echo $transaction->remittanceInformationStructured; ?></td>
+                            <td><?php echo $transaction->note; ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>

@@ -57,9 +57,8 @@ foreach ($custom_fields as $custom_field) {
     </div>
     <div class="headerbar-item pull-left">
         <div class="btn-group btn-group-sm index-options">
-            <?php foreach ($allclients as $elem_client) {
-                if ($elem_client->client_id == $client->client_id) continue; ?>
-                <a href="<?php echo site_url('clients/view/' . $elem_client->client_id); ?>" class="btn btn-default">
+            <?php foreach ($allclients as $elem_client) { ?>
+                <a href="<?php echo site_url('clients/view/' . $elem_client->client_id); ?>" class="btn <?php echo ($elem_client->client_id == $client->client_id)?'btn-primary':'btn-default';  ?> ">
                     <?php _htmlsc(($elem_client->client_name)); ?>
                 </a>
             <?php } ?>

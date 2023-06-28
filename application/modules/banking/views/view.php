@@ -31,5 +31,11 @@
       ?>
     </table>
   </div>
+  <form method="post" action="<?php echo site_url("banking/transaction/".$transaction["transactionId"]); ?>">
+  <input type="hidden" name="<?php echo $this->config->item('csrf_token_name'); ?>"
+           value="<?php echo $this->security->get_csrf_hash() ?>">
+    Notice:<input type="text" name="note" value="<?php echo $transaction["note"]; ?>" />
+    <input type="submit" value="speichern" />
+  </form>
 </div>
 <br>

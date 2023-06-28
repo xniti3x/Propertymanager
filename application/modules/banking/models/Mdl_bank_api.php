@@ -153,9 +153,6 @@ public function saveTransactionFile($array){
     }
 
     public function getAllTransactionsBy($iban,$client_iban_partner){
-        if(empty($iban) and empty($client_iban_partner)){
-            return array();
-        }
         $sql="select * from ip_transactions where iban='".$iban."' OR iban='".$client_iban_partner."'";
         return $this->db->query($sql)->result();
     }

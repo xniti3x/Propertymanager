@@ -62,12 +62,15 @@ class Banking extends Admin_Controller
         $api = new Api();
         $transactions=$api->getAllTransactions($this->mdl_bank_api->getValue('access'),$this->mdl_bank_api->getValue('account_id'));
         $transactions=($transactions["result"]["transactions"]["booked"]);
+        
+        //$transactions=$this->getTransactionFromFile();
+        
         $last_transactions=$this->mdl_bank_api->getAllTransactions();
         $update=true;
 
         $this->load->model('payments/mdl_payments');
-        foreach($transactions as $item){
-            echo "<pre>";
+        echo "<pre>";
+        foreach($transactions as $item){    
 
             $insert=true;
             foreach($last_transactions as $db_item){
@@ -90,7 +93,7 @@ class Banking extends Admin_Controller
                         "payment_amount"=>$invoice->invoice_total,
                         "payment_method_id"=>'1',
                         "payment_date"=>date("Y-m-d"),
-                        "payment_note"=>'transID: '.$item['transactionId']
+                        "payment_note"=>'date:'.$item['bookingDate'].' - transID: '.$item['transactionId']
                         ); 
                         $this->mdl_payments->save(null,$db_array);
                         
@@ -184,4 +187,11 @@ class Banking extends Admin_Controller
         }       
     }
 
+    private function saveTransactionAsFile($transactionArray){
+        file_put_contents("transaction_data.json",$transactionArray);
+    }
+    
+    private function getTransactionFromFile(){
+        return json_decode(file_get_contents("transaction_data.json"))->data;
+    }
 }

@@ -229,7 +229,7 @@ class Clients extends Admin_Controller
                 'quote_statuses' => $this->mdl_quotes->statuses(),
                 'invoice_statuses' => $this->mdl_invoices->statuses(),
                 'vertrag' => $this->mdl_vertrag->getDataByClientId($client_id),
-                'transactions' => $this->mdl_bank_api->getAllTransactionsBy($client->client_iban),
+                'transactions' => $this->mdl_bank_api->getAllTransactionsBy($client->client_iban,$client->client_iban_partner),
                 'allclients' => $allClients
             )
         );

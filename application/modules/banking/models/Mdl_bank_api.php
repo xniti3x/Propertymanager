@@ -34,7 +34,16 @@ class Mdl_Bank_Api extends Response_Model
 
     public function saveTransaction($array){
         $title="";
-        $iban=$this->getIban($array);
+        $iban="";
+        if(isset($array["creditorName"])){
+            $title=$array["creditorName"];
+            $iban=$array["creditorAccount"]["iban"];
+        }
+
+        if(isset($array["debtorName"])){
+            $title=$array["debtorName"];
+            $iban=$array["debtorAccount"]["iban"];
+        }
         
     $this->db->set(array(
         "transactionId"=>$array["transactionId"],
@@ -143,8 +152,11 @@ public function saveTransactionFile($array){
         return $iban;
     }
 
-    public function getAllTransactionsBy($iban){
-        $sql="select * from ip_transactions where iban='".$iban."'";
+    public function getAllTransactionsBy($iban,$client_iban_partner){
+        if(empty($iban) and empty($client_iban_partner)){
+            return array();
+        }
+        $sql="select * from ip_transactions where iban='".$iban."' OR iban='".$client_iban_partner."'";
         return $this->db->query($sql)->result();
     }
 }

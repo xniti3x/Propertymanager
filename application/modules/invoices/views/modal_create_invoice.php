@@ -38,7 +38,9 @@
                     invoice_time_created: '<?php echo date('H:i:s') ?>',
                     invoice_password: $('#invoice_password').val(),
                     user_id: '<?php echo $this->session->userdata('user_id'); ?>',
-                    payment_method: $('#payment_method_id').val()
+                    payment_method: $('#payment_method_id').val(),
+                    invoice_period_start:'<?php echo date("Y-m-01"); ?>',
+                    invoice_period_end:'<?php echo date("Y-m-30"); ?>',
                 },
                 function (data) {
                     <?php echo(IP_DEBUG ? 'console.log(data);' : ''); ?>

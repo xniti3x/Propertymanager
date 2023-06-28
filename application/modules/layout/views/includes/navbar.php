@@ -43,10 +43,15 @@
                 </li>
                 
                 <li class="dropdown">
-                    <a href="<?php echo site_url('payments/index'); ?>">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-caret-down"></i> &nbsp;
                             <span class="hidden-md"><?php _trans('payments'); ?></span>
                             <i class="visible-md-inline fa fa-credit-card"></i>
                     </a>
+                    <ul class="dropdown-menu">
+                        <li><?php echo anchor('payments/index', trans('payments')); ?></li>
+                        <li><?php echo anchor('banking/index', trans('transactions')); ?></li>
+                    </ul>
                 </li>
 
                 <li class="dropdown">

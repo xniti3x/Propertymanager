@@ -19,6 +19,19 @@ CREATE TABLE IF NOT EXISTS `ip_appartment`
     PRIMARY KEY (`appartment_id`) 
 );
 
+CREATE TABLE IF NOT EXISTS `ip_transactions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `transactionId` varchar(255) NOT NULL,
+  `bookingDate` date DEFAULT NULL,
+  `valueDate` date DEFAULT NULL,
+  `transactionAmount` double DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `iban` varchar(255) DEFAULT NULL,
+  `remittanceInformationStructured` text,
+  `additionalInformation` varchar(255) DEFAULT NULL,
+  `note` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `ip_vertrag` (
   `id` int(11) NOT NULL,
@@ -37,3 +50,6 @@ CREATE TABLE IF NOT EXISTS `ip_vertrag` (
 
 ALTER TABLE `ip_vertrag` ADD PRIMARY KEY (`id`);
 ALTER TABLE `ip_vertrag` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT; COMMIT;
+
+ALTER TABLE `ip_clients` ADD `client_iban` VARCHAR(55) NOT NULL AFTER `client_gender`;
+ALTER TABLE `ip_clients` ADD `client_iban_partner` VARCHAR(55) NOT NULL AFTER `client_gender`;

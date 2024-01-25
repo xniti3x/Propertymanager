@@ -14,4 +14,5 @@
             <?php }  ?>
         </tbody>
     </table>
+    <?php $this->layout->load_view('upload/dropzone-client-html'); ?>
 </div>

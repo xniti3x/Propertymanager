@@ -185,4 +185,14 @@ class Settings extends Admin_Controller
 
         redirect('settings');
     }
+
+    public function db_switch($dbname){
+        $file=APPPATH."/../ipconfigdb.php";
+        
+        log_message('info', 'changing db to'.$dbname);
+
+        file_put_contents($file,'DB_DATABASE='.$dbname);
+        
+        redirect('dashboard/index');
+    }
 }

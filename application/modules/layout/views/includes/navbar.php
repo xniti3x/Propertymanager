@@ -9,6 +9,17 @@
 
         <div class="collapse navbar-collapse" id="ip-navbar-collapse">
             <ul class="nav navbar-nav">
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-caret-down"></i> &nbsp;
+                        <span class="hidden-md"><?php _trans("Activ - ".env('DB_DATABASE')); ?></span>
+                        <i class="visible-md-inline fa fa-database"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><?php echo anchor('settings/db_switch/'.env('DB_DATABASE1'), trans(env('DB_DATABASE1'))); ?></li>
+                        <li><?php echo anchor('settings/db_switch/'.env('DB_DATABASE2'), trans(env('DB_DATABASE2'))); ?></li>
+                    </ul>
+                </li>
                 <li><?php echo anchor('dashboard', trans('dashboard'), 'class="hidden-md"') ?>
                     <?php echo anchor('dashboard', '<i class="fa fa-dashboard"></i>', 'class="visible-md-inline-block"') ?>
                 </li>

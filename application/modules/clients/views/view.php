@@ -70,6 +70,7 @@ foreach ($custom_fields as $custom_field) {
     <li class="active"><a data-toggle="tab" href="#clientDetails"><?php _trans('details'); ?></a></li>
     <li><a data-toggle="tab" href="#clientInvoices"><?php _trans('Rechnungen'); ?></a></li>
     <li><a data-toggle="tab" href="#clientPayments"><?php _trans('payments'); ?></a></li>
+    <li><a data-toggle="tab" href="#clientContract"><?php _trans('Vertrag'); ?></a></li>
 </ul>
 
 <div id="content" class="tabbable tabs-below no-padding">
@@ -81,15 +82,19 @@ foreach ($custom_fields as $custom_field) {
 
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
-                    <h2> <?php echo $client->client_name; ?></h2> 
-                    <br><?php echo _trans('Iban') . ": " . $client->client_iban; ?>
-                    <br><?php echo _trans('Iban Partner') . ": " . $client->client_iban_partner; ?>
-                    <hr>
-                    <?php $this->layout->load_view('upload/dropzone-client-html'); ?>
-                    <?php $this->layout->load_view('clients/partial_client_contract'); ?>
+                    <table class="table table-hover table-bordered table-condensed no-margin">
+                        <tr><th>Name</th><th><?php echo $client->client_name; ?></th></tr>
+                        <tr><td>Straße</td><td><?php echo $client->client_address_1; ?></td></tr>
+                        <tr><td>Ort</td><td><?php echo $client->client_zip; ?>, <?php echo $client->client_city; ?></td></tr>
+                        <tr><td>phone</td><td><?php echo $client->client_phone; ?></td></tr>
+                        <tr><td>Iban</td><td><?php echo $client->client_iban; ?></td></tr>
+                        <tr><td>Iban Alternativ</td><td><?php echo $client->client_iban_partner; ?></td></tr>
+                        <tr style="color:green;"><td>Zeitraum</td><td>01-01-2023 bis heute</td></tr>
+                    </table>
+
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6">
-                    <?php echo $invoice_client_table; ?>
+                    
                     <table class="table table-bordered no-margin">
                         <tr>
                             <th>
@@ -116,13 +121,11 @@ foreach ($custom_fields as $custom_field) {
                             </td>
                         </tr>
                     </table>
-                </div>
 
-                <div class="col-xs-12 col-md-6">
-                <?php $this->layout->load_view('clients/partial_client_transactions'); ?>
                 </div>
 
             </div>
+            <div class="row"> <?php echo $invoice_client_table; ?></div>
             <?php if ($client->client_surname != "") : //Client is not a company 
             ?>
                 <hr>
@@ -229,6 +232,10 @@ foreach ($custom_fields as $custom_field) {
 
         <div id="clientPayments" class="tab-pane table-content">
             <?php echo $payment_table; ?>
+        </div>
+
+        <div id="clientContract" class="tab-pane table-content">
+        <?php $this->layout->load_view('clients/partial_client_contract'); ?>
         </div>
     </div>
 

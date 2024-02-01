@@ -35,13 +35,10 @@ class Vertrag extends Admin_Controller
 
     public function addVertragPost()
     {
-        $data['vermieter'] = $this->input->post('vermieter');
         $data['client_id'] = $this->input->post('client_id');
         $data['appartment_id'] = $this->input->post('appartment_id');
-        $data['adresse'] = $this->input->post('adresse');
         $data['kaltmiete'] = $this->input->post('kaltmiete');
         $data['nebenkosten'] = $this->input->post('nebenkosten');
-        $data['iban'] = $this->input->post('iban');
         $data['kaution'] = $this->input->post('kaution');
         $data['kautionart'] = $this->input->post('kautionart');
         $data['begin'] = $this->input->post('begin');
@@ -90,7 +87,8 @@ class Vertrag extends Admin_Controller
         $vertrag = $this->mdl_vertrag->getDataById($vertrag_id);
         $appartment = $this->mdl_appartment->getDataById($vertrag->appartment_id);
         $client = $this->db->where('client_id', $vertrag->client_id)->get('ip_clients')->row();
-        $this->load->view('vertrag/view-vertrag', array("vertrag" => $vertrag, "client" => $client, "appartment" => $appartment));
+        $user = $this->db->select('user_company,user_address_1,user_city,user_zip,user_mobile,user_email,user_iban')->where('user_id', '1')->get('ip_users')->row();
+        $this->load->view('vertrag/view-vertrag', array("user"=>$user,"vertrag" => $vertrag, "client" => $client, "appartment" => $appartment));
     }
 
     public function delVertrag($vertrag_id)

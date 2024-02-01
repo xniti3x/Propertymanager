@@ -70,7 +70,6 @@ foreach ($custom_fields as $custom_field) {
     <li class="active"><a data-toggle="tab" href="#clientDetails"><?php _trans('details'); ?></a></li>
     <li><a data-toggle="tab" href="#clientInvoices"><?php _trans('Rechnungen'); ?></a></li>
     <li><a data-toggle="tab" href="#clientPayments"><?php _trans('payments'); ?></a></li>
-    <li><a data-toggle="tab" href="#clientContract"><?php _trans('Vertrag'); ?></a></li>
 </ul>
 
 <div id="content" class="tabbable tabs-below no-padding">
@@ -89,7 +88,7 @@ foreach ($custom_fields as $custom_field) {
                         <tr><td>phone</td><td><?php echo $client->client_phone; ?></td></tr>
                         <tr><td>Iban</td><td><?php echo $client->client_iban; ?></td></tr>
                         <tr><td>Iban Alternativ</td><td><?php echo $client->client_iban_partner; ?></td></tr>
-                        <tr style="color:green;"><td>Zeitraum</td><td>01-01-2023 bis heute</td></tr>
+                        <tr style="color:<?php echo $vertrag==null?'red':'green'; ?>"><td>Zeitraum</td><td><?php if($vertrag!=null){ echo $vertrag->begin." - ".$vertrag->ende;}else{echo "Kein Vertrag.";} ?></td></tr>
                     </table>
 
                 </div>
@@ -125,7 +124,7 @@ foreach ($custom_fields as $custom_field) {
                 </div>
 
             </div>
-            <div class="row"> <?php echo $invoice_client_table; ?></div>
+            <?php $vertrag!=null? $this->layout->load_view('clients/partial_client_contract'):''; ?>
             <?php if ($client->client_surname != "") : //Client is not a company 
             ?>
                 <hr>
@@ -232,10 +231,6 @@ foreach ($custom_fields as $custom_field) {
 
         <div id="clientPayments" class="tab-pane table-content">
             <?php echo $payment_table; ?>
-        </div>
-
-        <div id="clientContract" class="tab-pane table-content">
-        <?php $this->layout->load_view('clients/partial_client_contract'); ?>
         </div>
     </div>
 

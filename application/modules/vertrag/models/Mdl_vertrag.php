@@ -29,7 +29,9 @@ class Mdl_Vertrag extends Response_Model{
         return $this->db->get('ip_vertrag')->row();
     }
     public function getDataByClientId($id) {
+        $this->db->from('ip_appartment');
         $this->db->where('client_id', $id);
+        $this->db->where('ip_appartment.appartment_id=ip_vertrag.appartment_id');   
         return $this->db->get('ip_vertrag')->row();
     }
 

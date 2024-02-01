@@ -1,72 +1,105 @@
+<form role="form" method="post" action="<?php echo site_url('vertrag/addVertragPost') ?>">  
+<input type="hidden" name="<?php echo $this->config->item('csrf_token_name'); ?>"
+           value="<?php echo $this->security->get_csrf_hash() ?>">
+
+    <div id="headerbar">
+        <h1 class="headerbar-title"><?php _trans('Vertragsform'); ?></h1>
+        <?php $this->layout->load_view('layout/header_buttons'); ?>
+    </div>
 <div class="container">
-  <h2>Add Vertrag</h2>
-  <form role="form" method="post" action="<?php echo site_url('vertrag/addVertragPost') ?>">
-    <input type="hidden" name="<?php echo $this->config->item('csrf_token_name'); ?>" value="<?php echo $this->security->get_csrf_hash() ?>">
+  <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <?php _trans('Vertragspartner'); ?>
+                        <div class="pull-right">
+                            <label for="client_active" class="control-label">
+                                <?php _trans('active_client'); ?>
+                                <input id="client_active" name="client_active" type="checkbox" value="1"
+                                    <?php if ($this->mdl_clients->form_value('client_active') == 1
+                                        || !is_numeric($this->mdl_clients->form_value('client_active'))
+                                    ) {
+                                        echo 'checked="checked"';
+                                    } ?>>
+                            </label>
+                        </div>
+                    </div>
 
-    <div class="form-group has-feedback">
-      
-      <label for="client_id"><?php _trans('Mieter'); ?><a href="<?php echo site_url("clients/form"); ?>"><i class="fa fa-plus"></i></a></label>
-      <div class="input-group">
-        <select name="client_id" id="client_id" class="client-id-select form-control" autofocus="autofocus">
-          <?php foreach ($clients as $client) { ?>
-            <option <?php echo $client->client_id == $client_id ? "selected" : ""; ?> value="<?php echo $client->client_id; ?>"><?php _htmlsc(format_client($client)); ?></option>
-          <?php } ?>
+                    <div class="panel-body">
+                      <div class="form-group has-feedback">
+                      <label for="appartment_id"><?php _trans('Mieter'); ?></label>
+                        <div class="input-group">
+                          <select name="client_id" id="client_id" class="client-id-select form-control" autofocus="autofocus">
+                            <?php foreach ($clients as $client) { ?>
+                              <option <?php echo $client->client_id == $client_id ? "selected" : ""; ?> value="<?php echo $client->client_id; ?>"><?php _htmlsc(format_client($client)); ?></option>
+                            <?php } ?>
 
-        </select>
-        <span id="toggle_permissive_search_clients" class="input-group-addon" title="" style="cursor:pointer;"></span>
-      </div>
-    </div>
-    <div class="form-group has-feedback">
-      
-      <label for="appartment_id"><?php _trans('Appartment'); ?><a class="create-appartment" href="#"><i class="fa fa-plus"></i></a></label>
-      <div class="input-group">
-        <select name="appartment_id" id="appartment_id" class="client-id-select form-control" autofocus="autofocus">
-          <?php foreach ($appartments as $item) { ?>
-            <option value="<?php echo $item->appartment_id; ?>"><?php echo $item->appartment_title; ?></option>
-          <?php } ?>
+                          </select>
+                          <span id="toggle_permissive_search_clients" class="input-group-addon">
+                            <a href="<?php echo site_url("clients/form"); ?>"><i class="fa fa-plus"></i></a>
+                          </span>
+                        </div>
+                      </div>
 
-        </select>
-        <span id="toggle_permissive_search_clients" class="input-group-addon" title="" style="cursor:pointer;"></span>
-      </div>
-    </div>
+                      <div class="form-group has-feedback"> 
+                        <label for="appartment_id"><?php _trans('Appartment'); ?></label>
+                        <div class="input-group">
+                          <select name="appartment_id" id="appartment_id" class="client-id-select form-control" autofocus="autofocus">
+                            <?php foreach ($appartments as $item) { ?>
+                              <option value="<?php echo $item->appartment_id; ?>"><?php echo $item->appartment_title; ?></option>
+                            <?php } ?>
 
-    <div class="form-group">
-      <label for="vermieter">Vermieter:</label>
-      <input type="text" class="form-control" id="vermieter" name="vermieter">
-    </div>
-    <div class="form-group">
-      <label for="vermieter">Adresse:</label>
-      <input type="text" class="form-control" id="adresse" name="adresse">
-    </div>
-    <div class="form-group">
-      <label for="kaltmiete">Kaltmiete:</label>
-      <input type="text" class="form-control" id="kaltmiete" name="kaltmiete">
-    </div>
-    <div class="form-group">
-      <label for="nebenkosten">Nebenkosten:</label>
-      <input type="text" class="form-control" id="nebenkosten" name="nebenkosten">
-    </div>
-    <div class="form-group">
-      <label for="iban">Iban:</label>
-      <input type="text" class="form-control" id="iban" name="iban">
-    </div>
-    <div class="form-group">
-      <label for="kaution">Kaution:</label>
-      <input type="text" class="form-control" id="kaution" name="kaution">
-    </div>
-    <div class="form-group">
-      <label for="kautionart">Kautionart:</label>
-      <input type="text" class="form-control" id="kautionart" name="kautionart">
-    </div>
-    <div class="form-group">
-      <label for="begin">Begin:</label>
-      <input type="text" class="form-control" id="begin" name="begin">
-    </div>
-    <div class="form-group">
-      <label for="ende">Ende:</label>
-      <input type="text" class="form-control" id="ende" name="ende">
-    </div>
+                          </select>
+                          <span id="toggle_permissive_search_clients" class="input-group-addon"><a class="create-appartment" href="#"><i class="fa fa-plus"></i></a></span>
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="begin">Begin:</label>
+                        <input type="date" class="form-control" id="begin" name="begin">
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="ende">Ende:</label>
+                        <input type="date" class="form-control" id="ende" name="ende">
+                      </div>
+                    </div>
+                </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+            </div>   
+            <div class="col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <?php _trans('Vertragsdaten'); ?>
+                    </div>
+                    <div class="panel-body">
+                    <div class="form-group">
+                      <label for="kaltmiete">Kaltmiete:</label>
+                      <input type="number" class="form-control" id="kaltmiete" name="kaltmiete">
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="nebenkosten">Nebenkosten:</label>
+                      <input type="number" class="form-control" id="nebenkosten" name="nebenkosten">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="kaution">Kautionsbetrag:</label>
+                      <input type="number" class="form-control" id="kaution" name="kaution">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="kautionart">Wie wurde die Kaution bezahlt?</label>
+                      <select name="kautionart" id="kautionart" class="form-control" autofocus="autofocus">
+                        <option value=""></option>
+                        <option value="Bar">Bar</option>
+                        <option value="Überweisung">Überweisung</option>
+                              
+
+                          </select>
+                    </div>  
+                </div>
+            </div> 
+        </div>
 </div>
+</form>

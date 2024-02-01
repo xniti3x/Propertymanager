@@ -1,7 +1,7 @@
 <div class="panel panel-default no-margin">
 
     <div class="panel-heading">
-        <?php _trans('Vertrag'); ?>   
+        <?php _trans('Vertragsdokument'); ?>   
         <?php if(isset($vertrag->id)){ ?><a href="<?php echo site_url("vertrag/viewVertrag/".$vertrag->id); ?> " target="_blank"><i class="pull-right fa fa-eye"></i></a> <?php } ?>
         <a href="<?php echo site_url("vertrag/addVertrag/".$client->client_id); ?> " target="_blank"><i class="pull-right fa fa-plus"></i></a>
     </div>

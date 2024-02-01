@@ -24,14 +24,26 @@
         <h2>Mietvertrag</h2>
         <table class="table table-bordered">
             <tr>
-                <td><b>Vermieter:</b> <u><?php echo $vertrag->vermieter; ?></u></td>
-                <td><b>Mieter:<u></b><a href="<?php echo site_url('clients/view/').$client->client_id; ?>"><?php echo $client->client_name; ?></a></u></td>
+                <td><b>Vermieter: </b><?php echo 
+                $user->user_company." | "
+                .$user->user_address_1." | "
+                .$user->user_zip
+                ." ".$user->user_city; 
+                ?></u></td>
+            </tr>
+            <tr>
+                <td><b>Mieter:</b>
+                
+                <?php echo $client->client_name." | ".$client->client_address_1." | "
+                .$client->client_zip
+                ." ".$client->client_city." | ".$client->client_mobile ; ?></td>
             </tr>
         </table>
-        <table class="table table-bordered">
+        <table class="table table-bordered" style="font-size:10pt;">
             <tr>
                 <td><b>§1 Mieträume</b><br>
-                    Der Vermieter vermietet dem Mieter zu Wohnzwecken die im Hause: <u><?php echo $vertrag->adresse; ?></u>
+                    Der Vermieter vermietet dem Mieter zu Wohnzwecken die im Hause: 
+                    <u><?php echo $user->user_address_1." ".$user->user_zip." ".$user->user_city; ?></u>
                     Die Wohnfläche beträgt <u><?php echo $appartment->appartment_qm; ?></u>qm, vermietet wird: <u><?php echo $appartment->appartment_raume; ?></u>
                 </td>
             </tr>
@@ -39,13 +51,13 @@
                 <td><b>§2 Mietzins und Nebenkosten</b><br>
                     Miete und Nebenkosten sind ab Beginn der Mietzeit monatlich im Voraus zu bezahlen.
                     Die monatliche Grundmiete beträgt: <u><?php echo $vertrag->kaltmiete; ?> €</u>
-                    Nebenkosten Pauschal: <u><?php echo $vertrag->nebenkosten; ?> €</u> (Siehe Nebenkostentabelle)
-                    Insgesamt sind vom Mieter monatlich: <u><?php echo $vertrag->kaltmiete + $vertrag->nebenkosten; ?> €</u> auf das Konto mit der IBAN: <u><?php echo $vertrag->iban; ?></u> zu bezahlen.
+                    Nebenkosten: <u><?php echo $vertrag->nebenkosten; ?> €</u> (Siehe Nebenkostentabelle)
+                    Insgesamt sind vom Mieter monatlich: <u><?php echo $vertrag->kaltmiete + $vertrag->nebenkosten; ?> €</u> auf das Konto mit der IBAN: <u><?php echo $user->user_iban; ?></u> zu bezahlen.
                 </td>
             </tr>
             <tr>
                 <td><b>§3 Mietsicherheit/Kaution</b><br>
-                    Der Mieter hat bei Beginn des Mietverhältnisses eine Mietsicherheit in Höhe von EUR <u><?php echo $vertrag->kaution; ?> <?php echo $vertrag->kautionart; ?></u> zuleistet. Ist die Kaution innerhalb von 2 Monaten nicht bezahlt, liegt eine Vertragsverletzung vor, die automatisch zu einer fristlosen kündigung führt.
+                    Der Mieter hat bei Beginn des Mietverhältnisses eine Mietsicherheit in Höhe von EUR <u><?php echo $vertrag->kaution; ?> <?php echo $vertrag->kautionart; ?></u> zuleisten. Ist die Kaution innerhalb von 2 Monaten nicht bezahlt, liegt eine Vertragsverletzung vor, die automatisch zu einer fristlosen Kündigung führt.
                 </td>
             </tr>
             <tr>
@@ -91,7 +103,7 @@
                     1. Um Privatsphäre bzw. Störungen zu vermeiden verpflichtet sich der Mieter hiermit für die Ablesung der Heizungsmessgeräte und der Warmwasserzähler(Zählernummer, Wert).
                     <br> 2. Die Ablesung hat Schriftlich oder Digital (Im Sinne von Fotos oder änlichem) zu erfolgen und muss mindestens alle 6 Monate gelesen werden.
                     <br> 3. Im Falle einer Fehlenden bzw. ungenauen oder unglaubwürdigen Protokollierung darf der Vermieter die Verbrauchswerte im normalen Maß (Durchschnitt der anderen Verbraucher) schätzen.
-
+                    <br> 4. Sollte eine Ablesung dieser Form nicht möglichsein (Falls keine Messgeräte vorhanden oder Defekt) so wird vereinbart nach den Qm-Anteil abzurechnen. 
                 </td>
             </tr>
         </table>

@@ -22,7 +22,21 @@ DB_USERNAME=
 DB_PASSWORD=
 DB_DATABASE=
 DB_PORT=
+DB_TITLE='default'
 
+# Only if you use a Second database
+# to add a new db extend the ./config/database.php (add for example default3)
+# add here new properties to fit the database configs
+# add the DB_TITLE3 to navigation view with default3 path variable. (./layout/views/includes/navbar.php)
+
+DB_HOSTNAME2='localhost'
+DB_USERNAME2='root'
+DB_PASSWORD2='123456'
+DB_DATABASE2='Baumanagement'
+DB_PORT2=3306
+DB_TITLE2='Baumanagement'
+
+DB_ACTIVE='default'
 # If you want to be logged out after closing your browser window, set this setting to 0 (ZERO).
 # The number represents the amount of minutes after that IP will automatically log out users,
 # the default is 10 days.

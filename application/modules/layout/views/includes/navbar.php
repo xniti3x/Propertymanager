@@ -20,8 +20,8 @@
                         <i class="visible-md-inline fa fa-database"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><?php echo anchor('settings/db_switch/'.env('DB_DATABASE1'), trans(env('DB_DATABASE1'))); ?></li>
-                        <li><?php echo anchor('settings/db_switch/'.env('DB_DATABASE2'), trans(env('DB_DATABASE2'))); ?></li>
+                        <li><?php echo anchor('settings/db_switch/default', trans(env('DB_TITLE'))); ?></li>
+                        <li><?php echo anchor('settings/db_switch/default2', trans(env('DB_TITLE2'))); ?></li>
                     </ul>
                 </li>
                 <li><?php echo anchor('dashboard', trans('dashboard'), 'class="hidden-md"') ?>

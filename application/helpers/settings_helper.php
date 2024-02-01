@@ -84,3 +84,13 @@ function check_select($value1, $value2 = null, $operator = '==', $checked = fals
 
     echo $echo_selected ? $select : '';
 }
+
+function changeDatabase($dbname){
+    
+    log_message('info', 'changing db to'.$dbname);
+
+    $config = file_get_contents(IPCONFIG_FILE);
+    $config = preg_replace("/DB_ACTIVE=(.*)?/", "DB_ACTIVE='".$dbname."'", $config);
+    
+    write_file(IPCONFIG_FILE, $config);
+}

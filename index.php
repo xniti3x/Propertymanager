@@ -17,8 +17,6 @@ if (!file_exists('ipconfig.php')) {
 
 require('vendor/autoload.php');
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__, 'ipconfig.php');
-$dot_db_env = Dotenv\Dotenv::createImmutable(__DIR__, 'ipconfigdb.php');
-$dot_db_env->load();
 $dotenv->load();
 
 /**

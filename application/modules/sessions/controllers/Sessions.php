@@ -15,6 +15,14 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
  */
 class Sessions extends Base_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper('file');
+        $this->load->helper('settings');
+        changeDatabase("default");
+
+    }
     public function index()
     {
         redirect('sessions/login');

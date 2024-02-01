@@ -116,9 +116,12 @@ function select_pdf_invoice_template($invoice)
     } elseif ($invoice->invoice_status_id == 4) {
         // Use the paid template
         return $CI->mdl_settings->setting('pdf_invoice_template_paid');
-    } else {
-        // Use the default template
-        return $CI->mdl_settings->setting('pdf_invoice_template');
+    } else if($invoice->invoice_group_id==5){
+        //Use nebenkosten template
+        return $CI->mdl_settings->setting('pdf_invoice_template_nebenkosten');
+    }else{
+         // Use the default template
+         return $CI->mdl_settings->setting('pdf_invoice_template');
     }
 }
 

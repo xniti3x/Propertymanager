@@ -100,10 +100,14 @@ function generate_invoice_pdf($invoice_id, $stream = true, $invoice_template = n
     );
 
     $html = $CI->load->view('invoice_templates/pdf/' . $invoice_template, $data, true);
+    
+    if((ENVIRONMENT == 'production')){
+        $CI->load->helper('mpdf');
+        return pdf_create($html, trans('invoice') . '_' . str_replace(array('\\', '/'), '_', $invoice->invoice_number),$stream, $invoice->invoice_password, true, $is_guest, $include_zugferd, $associatedFiles);
 
-    $CI->load->helper('mpdf');
-    return pdf_create($html, trans('invoice') . '_' . str_replace(array('\\', '/'), '_', $invoice->invoice_number),
-        $stream, $invoice->invoice_password, true, $is_guest, $include_zugferd, $associatedFiles);
+    }else{
+        echo $html; 
+    }
 }
 
 function generate_invoice_sumex($invoice_id, $stream = true, $client = false)

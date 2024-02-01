@@ -87,6 +87,13 @@ class Mdl_Setup extends CI_Model
             )
         );
 
+        $this->db->insert('ip_invoice_groups', array(
+                'invoice_group_name' => 'Nebenkosten',
+                'invoice_group_prefix' => 'NBK',
+                'invoice_group_next_id' => 1
+            )
+        );
+
         $this->db->insert('ip_payment_methods', array(
             'payment_method_name' => 'Cash',
         ));
@@ -119,6 +126,7 @@ class Mdl_Setup extends CI_Model
             'pdf_invoice_template' => 'InvoicePlane',
             'pdf_invoice_template_paid' => 'InvoicePlane - paid',
             'pdf_invoice_template_overdue' => 'InvoicePlane - overdue',
+            'pdf_invoice_template_nebenkosten' => 'InvoicePlane - nebenkosten',
             'pdf_quote_template' => 'InvoicePlane',
             'public_invoice_template' => 'InvoicePlane_Web',
             'public_quote_template' => 'InvoicePlane_Web',

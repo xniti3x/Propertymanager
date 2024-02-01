@@ -12,7 +12,11 @@
             <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-caret-down"></i> &nbsp;
-                        <span class="hidden-md"><?php _trans("Activ - ".env('DB_DATABASE')); ?></span>
+                        <span class="hidden-md">
+                            <?php if (get_setting('custom_title') != '') {
+                                echo get_setting('custom_title');
+                            } ?>
+                        </span>
                         <i class="visible-md-inline fa fa-database"></i>
                     </a>
                     <ul class="dropdown-menu">

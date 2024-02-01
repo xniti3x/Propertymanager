@@ -14,13 +14,13 @@
         </thead>
         <tbody>
             <tr>
-                <td><?php echo $vertrag->appartment_title; echo "<br>- ".str_replace(",", "<br>- ",$vertrag->appartment_raume);?></td>
-                <td><?php echo $vertrag->kaltmiete; ?></td>
-                <td><?php echo $vertrag->nebenkosten; ?></td>
+                <td><b><?php echo $vertrag->appartment_title." | ".$vertrag->appartment_qm."m²</b>"; echo "<br>- ".str_replace(",", "<br>- ",$vertrag->appartment_raume);?></td>
+                <td><?php echo format_currency($vertrag->kaltmiete); ?>€</td>
+                <td><?php echo format_currency($vertrag->nebenkosten); ?></td>
                 <td><?php echo $vertrag->kaution; ?></td>
                 <td><?php echo $vertrag->kautionart; ?></td>
-                <td><?php echo $vertrag->begin; ?></td>
-                <td><?php echo $vertrag->ende; ?></td>
+                <td><?php echo format_date($vertrag->begin); ?></td>
+                <td><?php echo format_date($vertrag->ende); ?></td>
             </tr>
         </tbody>
     </table>

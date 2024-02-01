@@ -88,7 +88,7 @@ foreach ($custom_fields as $custom_field) {
                         <tr><td>phone</td><td><?php echo $client->client_phone; ?></td></tr>
                         <tr><td>Iban</td><td><?php echo $client->client_iban; ?></td></tr>
                         <tr><td>Iban Alternativ</td><td><?php echo $client->client_iban_partner; ?></td></tr>
-                        <tr style="color:<?php echo $vertrag==null?'red':'green'; ?>"><td>Zeitraum</td><td><?php if($vertrag!=null){ echo $vertrag->begin." - ".$vertrag->ende;}else{echo "Kein Vertrag.";} ?></td></tr>
+                        <tr style="color:<?php echo $vertrag==null?'red':'green'; ?>"><td>Zeitraum</td><td><?php if($vertrag!=null){ echo format_date($vertrag->begin)." - ".format_date($vertrag->ende);}else{echo "Kein Vertrag.";} ?></td></tr>
                     </table>
 
                 </div>

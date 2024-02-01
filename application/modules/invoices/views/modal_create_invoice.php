@@ -40,7 +40,7 @@
                     user_id: '<?php echo $this->session->userdata('user_id'); ?>',
                     payment_method: $('#payment_method_id').val(),
                     invoice_period_start:'<?php echo date("Y-m-01"); ?>',
-                    invoice_period_end:'<?php echo date("Y-m-30"); ?>',
+                    invoice_period_end:'<?php echo date("Y-m-01",strtotime('+1 month')); ?>',
                 },
                 function (data) {
                     <?php echo(IP_DEBUG ? 'console.log(data);' : ''); ?>

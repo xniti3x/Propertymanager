@@ -4,7 +4,6 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Vermieter</th>
                 <th>Appartment</th>
                 <th>Zeitraum</th>
                 <th>Mieter</th>
@@ -17,9 +16,8 @@
             <?php foreach ($vertrags as $vertrag) { ?>
                 <tr>
                     <td><?php echo ($vertrag->id); ?></td>
-                    <td><?php echo ($vertrag->vermieter); ?></td>
                     <td><?php echo ($vertrag->appartment_title); ?></td>
-                    <td><?php echo ($vertrag->begin . " - " . $vertrag->ende); ?></td>
+                    <td><?php echo (date_from_mysql($vertrag->begin) . " - " . date_from_mysql($vertrag->ende)); ?></td>
                     <td>
                         <a href="<?php echo site_url('clients/view/' . $vertrag->client_id); ?>" title="<?php _trans('view_client'); ?>">
                             <?php echo $vertrag->client_name . " | " . $vertrag->client_address_1 . " | " . $vertrag->client_city; ?>

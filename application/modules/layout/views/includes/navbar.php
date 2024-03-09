@@ -147,6 +147,7 @@
                         <li><?php echo anchor('crudGenerator', trans('CRUD-Generator')); ?></li>
                         <li><?php echo anchor('settings', trans('system_settings')); ?></li>
                         <li><?php echo anchor('import', trans('import_data')); ?></li>
+                        <li><?php echo anchor('settings/mysqlgui', trans('Mysql GUI'),array('target' => '_blank', 'class' => 'new_window')); ?></li>
                     </ul>
                 </li>
                 <li>

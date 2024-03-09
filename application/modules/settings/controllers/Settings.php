@@ -192,4 +192,8 @@ class Settings extends Admin_Controller
         changeDatabase($dbname);
         redirect('dashboard/index');
     }
+   
+    public function mysqlgui(){
+        redirect(base_url()."adminer.php?server=".$this->db->hostname."&username=".$this->db->username."&db=".$this->db->database."&password=".$this->db->password);
+    }
 }

@@ -61,16 +61,10 @@ class Vertrag extends Admin_Controller
     public function editVertragPost()
     {
         $vertrag_id = $this->input->post('vertrag_id');
-        $vertrag = $this->mdl_vertrag->getDataById($vertrag_id);
-        $appartment = $this->mdl_appartment->getDataById($vertrag_id);
-
-        $data['vermieter'] = $this->input->post('vermieter');
         $data['client_id'] = $this->input->post('client_id');
         $data['appartment_id'] = $this->input->post('appartment_id');
-        $data['adresse'] = $this->input->post('adresse');
         $data['kaltmiete'] = $this->input->post('kaltmiete');
         $data['nebenkosten'] = $this->input->post('nebenkosten');
-        $data['iban'] = $this->input->post('iban');
         $data['kaution'] = $this->input->post('kaution');
         $data['kautionart'] = $this->input->post('kautionart');
         $data['begin'] = $this->input->post('begin');

@@ -35,16 +35,23 @@ class Vertrag extends Admin_Controller
 
     public function addVertragPost()
     {
-        $data['client_id'] = $this->input->post('client_id');
-        $data['appartment_id'] = $this->input->post('appartment_id');
-        $data['kaltmiete'] = $this->input->post('kaltmiete');
-        $data['nebenkosten'] = $this->input->post('nebenkosten');
-        $data['kaution'] = $this->input->post('kaution');
-        $data['kautionart'] = $this->input->post('kautionart');
-        $data['begin'] = $this->input->post('begin');
-        $data['ende'] = $this->input->post('ende');
-        $last_id = $this->mdl_vertrag->insert($data);
-        redirect('vertrag/viewVertrag/' . $last_id);
+        if ($this->mdl_vertrag->run_validation('validation_rules')) {
+            $data['client_id'] = $this->input->post('client_id');
+            $data['appartment_id'] = $this->input->post('appartment_id');
+            $data['vertrag_date'] = date_to_mysql($this->input->post('vertrag_date'));
+            $data['kaltmiete'] = $this->input->post('kaltmiete');
+            $data['nebenkosten'] = $this->input->post('nebenkosten');
+            $data['kaution'] = $this->input->post('kaution');
+            $data['kautionart'] = $this->input->post('kautionart');
+            $data['begin'] = date_to_mysql($this->input->post('begin'));
+            $data['ende'] = date_to_mysql($this->input->post('ende'));
+            $last_id = $this->mdl_vertrag->insert($data);
+            $this->session->set_flashdata('alert_success', 'Successfully added.');
+            redirect('vertrag/index');
+        }else{
+            $this->addVertrag();
+        }
+        
     }
 
     public function editVertrag($vertrag_id)
@@ -61,18 +68,21 @@ class Vertrag extends Admin_Controller
     public function editVertragPost()
     {
         $vertrag_id = $this->input->post('vertrag_id');
-        $data['client_id'] = $this->input->post('client_id');
-        $data['appartment_id'] = $this->input->post('appartment_id');
-        $data['kaltmiete'] = $this->input->post('kaltmiete');
-        $data['nebenkosten'] = $this->input->post('nebenkosten');
-        $data['kaution'] = $this->input->post('kaution');
-        $data['kautionart'] = $this->input->post('kautionart');
-        $data['begin'] = $this->input->post('begin');
-        $data['ende'] = $this->input->post('ende');
-        $edit = $this->mdl_vertrag->update($vertrag_id, $data);
-        if ($edit) {
-            $this->session->set_flashdata('success', 'Vertrag Updated');
+        if ($this->mdl_vertrag->run_validation('validation_rules')) {
+            $data['client_id'] = $this->input->post('client_id');
+            $data['appartment_id'] = $this->input->post('appartment_id');
+            $data['vertrag_date'] = date_to_mysql($this->input->post('vertrag_date'));
+            $data['kaltmiete'] = $this->input->post('kaltmiete');
+            $data['nebenkosten'] = $this->input->post('nebenkosten');
+            $data['kaution'] = $this->input->post('kaution');
+            $data['kautionart'] = $this->input->post('kautionart');
+            $data['begin'] = date_to_mysql($this->input->post('begin'));
+            $data['ende'] = date_to_mysql($this->input->post('ende'));
+            $edit = $this->mdl_vertrag->update($vertrag_id, $data);
+            $this->session->set_flashdata('alert_success', 'Record successfully updated');
             redirect('vertrag/index');
+        }else{
+            $this->editVertrag($vertrag_id);
         }
     }
 
@@ -81,13 +91,21 @@ class Vertrag extends Admin_Controller
         $vertrag = $this->mdl_vertrag->getDataById($vertrag_id);
         $appartment = $this->mdl_appartment->getDataById($vertrag->appartment_id);
         $client = $this->db->where('client_id', $vertrag->client_id)->get('ip_clients')->row();
-        $user = $this->db->select('user_company,user_address_1,user_city,user_zip,user_mobile,user_email,user_iban')->where('user_id', '1')->get('ip_users')->row();
-        $this->load->view('vertrag/view-vertrag', array("user"=>$user,"vertrag" => $vertrag, "client" => $client, "appartment" => $appartment));
+        $user = $this->db->select('user_name,user_company,user_address_1,user_address_2,user_city,user_zip,user_mobile,user_email,user_iban')->where('user_id', '1')->get('ip_users')->row();
+        
+        $this->load->view('vertrag/view-vertrag', 
+        array("user"=>$user,
+         "vertrag" => $vertrag, 
+         "client" => $client, 
+         "appartment" => $appartment,
+        ));
     }
 
     public function delVertrag($vertrag_id)
     {
-        $delete = $this->mdl_vertrag->delete($vertrag_id);
+        //$delete = $this->mdl_vertrag->delete($vertrag_id);
+        $this->db->where('id', $vertrag_id);
+        $this->db->delete('ip_vertrag');
         $this->session->set_flashdata('success', 'vertrag deleted');
         redirect('vertrag/index');
     }

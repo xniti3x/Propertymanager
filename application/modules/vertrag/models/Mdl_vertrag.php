@@ -1,5 +1,4 @@
-
-<?php
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Mdl_Vertrag extends Response_Model{
 
@@ -57,5 +56,64 @@ class Mdl_Vertrag extends Response_Model{
                 $this->update($id,array('status' => '0'));
                 return "Deactivated";
              }
+    }
+    /**
+     * @return array
+     */
+    public function validation_rules()
+    {
+        return array(
+            'client_id' => array(
+                'field' => 'client_id',
+                'label' => 'client_id',
+                'rules' => 'required'
+            ),
+            'appartment_id' => array(
+                'field' => 'appartment_id',
+                'label' => trans('appartment_id'),
+                'rules' => 'required'
+            ),
+            'vertrag_date' => array(
+                'field' => 'vertrag_date',
+                'label' => trans('vertrag_date'),
+                'rules' => 'required'
+            ),
+            
+            'kaltmiete' => array(
+                'field' => 'kaltmiete',
+                'label' => trans('kaltmiete'),
+                'rules' => 'required'
+            ),
+            
+            'nebenkosten' => array(
+                'field' => 'nebenkosten',
+                'label' => trans('nebenkosten'),
+                'rules' => 'required'
+            ),
+            
+            'kaution' => array(
+                'field' => 'kaution',
+                'label' => trans('kaution'),
+                'rules' => 'required'
+            ),
+            
+            'kautionart' => array(
+                'field' => 'kautionart',
+                'label' => trans('kautionart'),
+                'rules' => 'required'
+            ),
+            
+            'begin' => array(
+                'field' => 'begin',
+                'label' => trans('begin'),
+                'rules' => 'required'
+            ),
+            
+            'ende' => array(
+                'field' => 'ende',
+                'label' => trans('ende'),
+                'rules' => 'required'
+            ),
+        );
     }
 }

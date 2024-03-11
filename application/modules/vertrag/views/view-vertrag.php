@@ -44,7 +44,7 @@
                 <td><b>§1 Mieträume</b><br>
                     Der Vermieter vermietet dem Mieter zu Wohnzwecken die im Hause: 
                     <u><?php echo $user->user_address_1." ".$user->user_zip." ".$user->user_city; ?></u>
-                    Die Wohnfläche beträgt <u><?php echo $appartment->appartment_qm; ?></u>qm, vermietet wird: <u><?php echo $appartment->appartment_raume; ?></u>
+                    Die Wohnfläche beträgt <u><?php echo $appartment->appartment_qm; ?></u> qm, vermietet wird: <u><?php echo $appartment->appartment_title." - ".$appartment->appartment_raume; ?></u>
                 </td>
             </tr>
             <tr>
@@ -171,10 +171,11 @@
             <table class="table table-bordered">
                 <tr>
                     <td>
-                        <div style="font-size:9pt;">Familienname, Vorname</div><?php echo $vertrag->vermieter; ?>
+                        <div style="font-size:9pt;">Familienname, Vorname</div>
+                        <?php echo $user->user_name; ?>
                     </td>
                     <td>
-                        <div style="font-size:9pt;">Anschrift</div>
+                        <div style="font-size:9pt;">Anschrift</div><?php echo $user->user_address_2; ?>
                     </td>
 
                 </tr>
@@ -206,7 +207,11 @@
             <table class="table table-bordered">
                 <tr>
                     <td colspan="2">
-                        <div style="font-size:9pt;">Anschrift</div><?php echo $vertrag->adresse; ?>
+                        <div style="font-size:9pt;">Anschrift</div><?php echo 
+                $user->user_address_1." | "
+                .$user->user_zip
+                ." ".$user->user_city; 
+                ?>
                     </td>
                 </tr>
                 <tr>

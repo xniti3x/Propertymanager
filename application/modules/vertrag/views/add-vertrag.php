@@ -27,6 +27,18 @@
 
                     <div class="panel-body">
                       <div class="form-group has-feedback">
+                          <label for="vertrag_date"><?php _trans('Vertragsdatum'); ?></label>
+
+                          <div class="input-group">
+                              <input name="vertrag_date" id="vertrag_date"
+                                    class="form-control datepicker"
+                                    value="<?php echo date(date_format_setting()); ?>">
+                              <span class="input-group-addon">
+                              <i class="fa fa-calendar fa-fw"></i>
+                          </span>
+                          </div>
+                      </div>
+                      <div class="form-group has-feedback">
                       <label for="appartment_id"><?php _trans('Mieter'); ?></label>
                         <div class="input-group">
                           <select name="client_id" id="client_id" class="client-id-select form-control" autofocus="autofocus">
@@ -54,14 +66,30 @@
                         </div>
                       </div>
                       
-                      <div class="form-group">
-                        <label for="begin">Begin:</label>
-                        <input type="date" class="form-control" id="begin" name="begin">
+                      <div class="form-group has-feedback">
+                          <label for="vertrag_date_created"><?php _trans('Vertragsbeginn'); ?></label>
+
+                          <div class="input-group">
+                              <input name="begin" id="begin"
+                                    class="form-control datepicker"
+                                    value="<?php echo date(date_format_setting()); ?>">
+                              <span class="input-group-addon">
+                              <i class="fa fa-calendar fa-fw"></i>
+                          </span>
+                          </div>
                       </div>
                       
-                      <div class="form-group">
-                        <label for="ende">Ende:</label>
-                        <input type="date" class="form-control" id="ende" name="ende">
+                      <div class="form-group has-feedback">
+                          <label for="vertrag_date_end"><?php _trans('Vertragsende'); ?></label>
+
+                          <div class="input-group">
+                              <input name="ende" id="ende"
+                                    class="form-control datepicker"
+                                    value="<?php echo date(date_format_setting()); ?>">
+                              <span class="input-group-addon">
+                              <i class="fa fa-calendar fa-fw"></i>
+                          </span>
+                          </div>
                       </div>
                     </div>
                 </div>
@@ -103,3 +131,4 @@
         </div>
 </div>
 </form>
+<div class="error text-danger"><?php echo validation_errors(); ?></div>

@@ -25,8 +25,6 @@ class Appartment extends Admin_Controller{
         $data['appartment_qm'] = $this->input->post('appartment_qm');
     
         
-        //$this->session->set_flashdata('alert_success', 'Successfully added');
-        //redirect('appartment/index');
         if ($this->mdl_appartment->run_validation()) {
         $response = [
             'success' => 1,
@@ -79,12 +77,6 @@ class Appartment extends Admin_Controller{
         redirect('appartment/index');
     }
 
-    public function addm(){
-        $response = [
-            'success' => 1,
-            'appartment_id' => $invoice_id,
-        ];
-    }
     public function modal_create_appartment()
     {
         $this->load->module('layout');

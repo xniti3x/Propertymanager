@@ -149,8 +149,7 @@
         <br><br>
         <table class="table table-bordered">
             <tr>
-                <td width="10%">Datum</td>
-                <td width="10%">&bull;</td>
+                <td width="10%">Datum: <?php echo date_from_mysql($vertrag->vertrag_date); ?></td>
                 <td width="10%">Vermieter</td>
                 <td width="15%">&bull;</td>
                 <td width="10%">Mieter</td>
@@ -215,8 +214,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><input type="checkbox" checked> Einzug – Tag des Einzugs: <?php echo $vertrag->begin; ?></td>
-                    <td><input type="checkbox" checked> Auszug – Tag des Auszugs: <?php echo $vertrag->ende; ?></td>
+                    <td><input type="checkbox" checked> Einzug – Tag des Einzugs: <?php echo date_from_mysql($vertrag->begin); ?></td>
+                    <td><input type="checkbox" checked> Auszug – Tag des Auszugs: <?php echo date_from_mysql($vertrag->ende); ?></td>
 
                 </tr>
             </table>
@@ -234,7 +233,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div style="font-size:9pt;">Familienname, Vorname</div>
+                        <div style="font-size:9pt;">Familienname, Vorname</div><p></p>
                     </td>
                     <td>
                         <div style="font-size:9pt;">Familienname, Vorname</div>
@@ -242,7 +241,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div style="font-size:9pt;">Familienname, Vorname</div>
+                        <div style="font-size:9pt;">Familienname, Vorname</div><p></p>
                     </td>
                     <td>
                         <div style="font-size:9pt;">Familienname, Vorname</div>
@@ -250,7 +249,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div style="font-size:9pt;">Familienname, Vorname</div>
+                        <div style="font-size:9pt;">Familienname, Vorname</div><p></p>
                     </td>
                     <td>
                         <div style="font-size:9pt;">Familienname, Vorname</div>
@@ -267,9 +266,9 @@
             <br><br>
             <table class="table">
                 <tr>
-                    <td width="50%">&#x2022;<div style="font-size:9pt;">Datum</div>
+                    <td width="50%"><div>Datum: <?php echo date_from_mysql($vertrag->vertrag_date); ?></div>
                     </td>
-                    <td width="50%">&#x2022;<div style="font-size:9pt;text-decoration:overline;">Unterschrift des Wohnungsgebers oder der beauftragten Person</div>
+                    <td width="50%"><div>Unterschrift des Wohnungsgebers oder der beauftragten Person</div>
                     </td>
                 </tr>
             </table>
